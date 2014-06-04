@@ -5,6 +5,12 @@ description: "js nodejs 前端 帝都 码农"
 baseurl: ""
 url: "http://www.skylerzhang.com"
 username: skylerzhang
+
+comments: 
+  provider: duoshuo
+  doushuo:
+    short_name: skylerzhang
+    
 # Build settings
 markdown: kramdown
 permalink: pretty
