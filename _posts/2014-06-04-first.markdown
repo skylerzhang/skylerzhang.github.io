@@ -1,0 +1,8 @@
+---
+layout: post
+title:  "第一篇博客测试"
+date:   2014-06-04 15:06:54
+categories: first
+---
+
+这是第一篇博客
