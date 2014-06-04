@@ -1,0 +1,10 @@
+.wb {
+	display: inline-block;
+    width: 16px;
+    height: 16px;
+    position: relative;
+    top: 3px;
+}
+.wb img {
+	width:16px;
+}
