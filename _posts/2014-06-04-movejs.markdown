@@ -1,0 +1,62 @@
+---
+layout: post
+title:  "Welcome to Jekyll!"
+date:   2014-06-04 15:06:54
+categories: move
+---
+
+{% highlight javascript %}
+function getStyle(obj, name){
+    return (obj.currentStyle || getComputedStyle(obj, false))[name];
+}
+function startMove(obj,json, options){
+    clearInterval(obj.timer);
+    var json= json || {};
+    var options= options || {};
+    options.time = options.time || 700;
+    options.type = options.type || 'ease-out';
+    var count= Math.floor(options.time/30);
+
+    var start= {};
+    var dis= {};
+    for (var name in json){
+        if (name=='opacity'){
+            start[name]=Math.round(parseFloat(getStyle(obj, name))*100);
+        }else{
+            start[name]=parseInt(getStyle(obj, name));
+        }
+        dis[name]=json[name]- start[name];
+    }
+    var n=0;
+    obj.timer=setInterval(function(){
+        n++;
+        for (var name in json){
+            switch (options.type){
+                case 'linear':
+                    var a=n/count;
+                    var cur=start[name]+dis[name]*a;
+                    break;
+                case 'ease-in':
+                    var a=n/count;
+                    var cur=start[name]+dis[name]*a*a*a;
+                    break;
+                case 'ease-out':
+                    var a=1-n/count;
+                    var cur=start[name]+dis[name]*(1-a*a*a);
+            }
+
+            if (name=='opacity'){
+                obj.style[name]=cur/100;
+                obj.style.filter='alpha(opacity:'+cur+')';
+            }else{
+                obj.style[name]=cur + 'px';
+            }
+        }
+
+        if (n==count){
+            clearInterval(obj.timer);
+            options.end && options.end();
+        }
+    },30)
+}
+{% endhighlight %}
