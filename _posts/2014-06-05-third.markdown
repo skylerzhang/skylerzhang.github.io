@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "利用github搭建个人网站——jekyll博客模板"
-date:   2014-06-04 15:06:54
+date:   2014-06-05 15:06:54
 categories: web
 ---
 
