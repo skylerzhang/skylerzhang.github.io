@@ -6,14 +6,15 @@ categories: move
 ---
 用pages绑定个人类似 `www.example.com` 这类的二级域名很简单（`example.com` 是一级域名）。
 
-* 第一步
+第一步
 在 `username.github.io` 的根目录下创建一个名为 `CNAME` 的文件，里面内容是你要绑定的域名`www.example.com`,如果你有多个域名要绑定的话要记得换行，每行一个域名即可。
 
-* 第二步
+
+第二步
 设置DNS解析，这个要到你的域名代理商的网站上设置，比如我是在[万网][net]上购买的域名，用的是万网提供的阿里云解析,设置如下：
-** 记录类型： CNAME
-** 主机记录： WWW
-** 记录值： username.github.io
+	*记录类型： CNAME
+	*主机记录： WWW
+	*记录值： username.github.io
 
 
 
