@@ -1,0 +1,64 @@
+---
+layout: post
+title:  "利用github搭建个人网站——添加多说评论框"
+date:   2014-06-05 02:07:00
+categories: web
+---
+
+一个博客一定要能评论，所以就必须有评论框。自己写一个？
+
+NO，造轮子那是大神的事，我等小菜果断使用插件。
+
+比较火的评论狂插件我我知道有两个，一个是国外的`disqus`,一个是国内的 `duoshuo`。根据国情需要果断选择后者。
+
+首先要去[多说官网][duoshuo]注册一个帐号，然后到“工具”里找到"通用代码" 如下：
+
+{% highlight javascript %}
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"username"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+{% endhighlight %}
+
+如果只是这样不设置的话，多有评论都会堆到一块，任何一篇文章都会显示整个站的评论。
+所以我们需要，修改上边的`div`自定义属性，来区分每一篇文章，这里根据模板最简单的就是选择`data-title`来区分，因为其他的jekyll模板里没有现成的，这样有个弊端就是如果你修改了文章标题那这篇文章之前的一些评论都就不显示了...
+修改后代码如下
+
+{% highlight javascript %}
+<!-- 多说评论框 start -->
+	<div class="ds-thread" data-title="{{ page.title }}"></div>
+<!-- 多说评论框 end -->
+<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+<script type="text/javascript">
+var duoshuoQuery = {short_name:"username"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+<!-- 多说公共JS代码 end -->
+
+{% endhighlight %}
+
+直接把这段代码放到`_layouts/post.html` 模板的最后即可，这样你发表的每篇博文后面就都会跟着多说的评论框啦。
+
+
+
+[duoshuo]: http://duoshuo.com/
