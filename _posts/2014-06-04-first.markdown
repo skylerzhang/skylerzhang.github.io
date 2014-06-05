@@ -16,13 +16,13 @@ github的pages功能可以帮助用户建立免费的个人站和项目主站，
 
 接下来就要创建主页了，如果你不会用git完全可以直接找到名为“username.github.io”，在里面创建一个名为 index.html 文件，名字不能变，你可以在里面随便写点东西，然后保存将代码同步，这个就是你网站的主页。如果用git的话代码如下：
 
-#=>创建主页
+# =>创建主页
 {% highlight html %}
 ~ $ cd username.github.io
 ~ $ echo "Hello World" > index.html
 {% endhighlight %}
 
-#=>推送到github
+# =>推送到github
 {% highlight html %}
 ~ $ git add --all
 ~ $ git commit -m "Initial commit"
