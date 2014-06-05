@@ -7,28 +7,28 @@ categories: web
 
 github的pages功能可以帮助用户建立免费的个人站和项目主站，乍一看[pages][page]满眼英文，其实细细一品也就那么回事。
 
-首先你要在github上建立一个代码仓库，名字必须为 * username.github.io * 。（一个Id, pages功能只允许你建立一个个人站，但是对项目主页的个数不做限制）
+首先你要在github上建立一个代码仓库，名字必须为 'username.github.io' 。（一个Id, pages功能只允许你建立一个个人站，但是对项目主页的个数不做限制）
 
 然后就是把你在github上建立的代码仓库克隆到本地记得先选好路径,命令行如下，当然你也可以使用github的客户端软件。
 	{% highlight html %}
 		~ $ git clone https://github.com/username/username.github.io
 	{% endhighlight %}
 
-接下来就要创建主页了，如果你不会用git完全可以直接找到名为“username.github.io”，在里面创建一个名为 index.html 文件，名字不能变，你可以在里面随便写点东西，然后保存将代码同步，这个就是你网站的主页。如果用git的话代码如下：
+接下来就要创建主页了，如果你不会用git完全可以直接找到名为'username.github.io'，在里面创建一个名为 'index.html' 文件，名字不能变，你可以在里面随便写点东西，然后保存将代码同步，这个就是你网站的主页。如果用git的话代码如下：
 
-* 创建主页 *
+* 创建主页
 	{% highlight html %}
 		~ $ cd username.github.io
 		~ $ echo "Hello World" > index.html
 	{% endhighlight %}
 
-* 推送到github *
+* 推送到github
 	{% highlight html %}
 		~ $ git add --all
 		~ $ git commit -m "Initial commit"
 		~ $ git push
 	{% endhighlight %}
 
-最后在浏览器里输入网址 * http://username.github.io * 就看到你网站的主页啦。
+最后在浏览器里输入网址 'http://username.github.io' 就看到你网站的主页啦。
 
 [page]: pages.github.com
