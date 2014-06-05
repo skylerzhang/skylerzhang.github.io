@@ -16,11 +16,11 @@ categories: web
 
 设置DNS解析，这个要到你的域名代理商的网站上设置，比如我是在[万网][net]上购买的域名，用的是万网提供的阿里云解析,设置如下：
 
-	*记录类型： CNAME*
+*记录类型： CNAME*
 
-	*主机记录： WWW*
+*主机记录： WWW*
 
-	*记录值： username.github.io*
+*记录值： username.github.io*
 
 
 
