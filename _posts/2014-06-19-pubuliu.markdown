@@ -1,7 +1,7 @@
 ---
 layout: post
 title:  "BAE+NODEJS+MYSQL搭建瀑布流网站"
-date:   2014-06-09 
+date:   2014-06-19 
 categories: nodejs
 ---
 
@@ -15,8 +15,9 @@ categories: nodejs
 [BAE][baidu] 目前是收费的，但是如果把配置降到最低，每天只要两毛钱。百度代码管理可以用svn和git 管理代码，但比较悲剧的是百度不支持在线
 编辑和预览。但是百度的数据库做的比较好用`phpmyadmin` 管理,个人感觉比京东的 `adminer` 强太多了。还有就是百度的文档写的已经非常详细了，甚至还有在ghost搭建博客的详细实例。
 
-网站地址: http://skylerzhang.duapp.com/index.html    [数据来自bule大神的课件]
-github:  https://github.com/skylerzhang/pbl
+[网站地址][wensite](数据来自智能社)
+
+[github地址][github]
 
 
 
@@ -32,7 +33,8 @@ github:  https://github.com/skylerzhang/pbl
 
 
 
-
+[website]: http://skylerzhang.duapp.com/index.html
+[github]: https://github.com/skylerzhang/pbl
 [sina]: http://sae.sina.com.cn/
 [jd]: http://jae.jd.com/
 [baidu]: http://developer.baidu.com/
