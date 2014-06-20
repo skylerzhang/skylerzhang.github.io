@@ -5,6 +5,7 @@ description: "js nodejs 前端 帝都 码农"
 baseurl: ""
 url: "http://www.skylerzhang.com"
 username: skylerzhang
+paginate: 5
 
     
 # Build settings
