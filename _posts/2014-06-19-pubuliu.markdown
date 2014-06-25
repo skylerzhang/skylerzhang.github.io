@@ -17,7 +17,9 @@ categories: nodejs
 
 ##以下是网站地址和github地址
 
-[网站地址][website](数据来自网络)
+[展示地址1][website1] （有进站页）
+[展示地址2][website2] （用mvc重写前端）
+
 
 [github地址][github]
 
@@ -35,7 +37,8 @@ categories: nodejs
 
 
 
-[website]: http://skylerzhang.duapp.com/index.html
+[website1]: http://skylerzhang.duapp.com/index.html
+[website2]: http://skylerzhang.duapp.com/mvc.html
 [github]: https://github.com/skylerzhang/pbl
 [sina]: http://sae.sina.com.cn/
 [jd]: http://jae.jd.com/
