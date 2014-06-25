@@ -17,7 +17,7 @@ categories: nodejs
 
 ##以下是网站地址和github地址
 
-[网站地址][website](数据来自智能社)
+[网站地址][website](数据来自网络)
 
 [github地址][github]
 
