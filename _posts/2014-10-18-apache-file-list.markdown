@@ -17,7 +17,7 @@ categories: apache
 
 2、 文件里又这么一段
 
-{% hightlight xml %}
+{% highlight html %}
 <Directory "/Library/WebServer/Documents">
     
     Options FollowSymLinks 
@@ -31,7 +31,7 @@ categories: apache
 {% endhighlight %}
 
 3、修改成
-{% hightlight xml %}
+{% highlight xml %}
 <Directory "/Library/WebServer/Documents">
     
     Options Indexes FollowSymLinks
