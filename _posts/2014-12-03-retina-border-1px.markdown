@@ -13,7 +13,6 @@ categories: apache
     <meta name="viewport" content="width=device-width, initial-scale=1">
 {% endhighlight %}
 的情况下,我们在布局的时候必须把所有的2X设计稿的尺寸除以2才是我们想要的效果。
-
 但是，这样的话问题就来了，如果设计的某些尺寸就是1px 怎么办（border居多）？
 总不能让前端写 `border-width: 0.5px` 吧。
 
