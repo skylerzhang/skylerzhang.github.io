@@ -150,10 +150,17 @@ a:visited { color: #205caa; }
 
 .posts li { margin-bottom: 30px; }
 
+.post li p {
+  font-size: 14px;
+  color: #cccccc;
+}
+
 .posts .post-link {
   font-size: 24px;
   letter-spacing: -1px;
   line-height: 1;
+  display: block;
+  margin-bottom: 5px;
 }
 
 .posts .post-date {

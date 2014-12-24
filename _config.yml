@@ -6,7 +6,7 @@ baseurl: ""
 url: "http://www.skylerzhang.com"
 username: skylerzhang
 paginate: 5
-    
+
 # Build settings
 markdown: kramdown
 permalink: pretty
