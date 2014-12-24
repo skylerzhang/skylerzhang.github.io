@@ -7,7 +7,7 @@ categories: js
 
 
 
-#window.location方法获取URL#
+window.location方法获取URL
 统一资源定位符 (Uniform Resource Locator, URL)
 
 完整的URL由这几个部分构成：
