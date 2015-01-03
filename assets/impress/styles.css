@@ -15,7 +15,7 @@ body { background:yellowgreen; font:24px/32px "HelveticaNeue-Light", "Helvetica 
 @-webkit-keyframes tips {
     0% {
         text-shadow: 0 0 0 white;
-        opacity: 0;
+        opacity: 0.2;
     }
 
     100% {
