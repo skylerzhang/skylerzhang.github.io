@@ -9,3 +9,13 @@
 	width:16px;
 	border: none;
 }
+
+.post-title {
+    transition: all 1s ease;
+    text-shadow: 0 0 0 0 yellow;
+}
+
+.post-title:hover {
+    transform: translateX(20px);
+    text-shadow: 0 0 3px 3px yellow;
+}
