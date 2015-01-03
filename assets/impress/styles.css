@@ -4,3 +4,22 @@
 /* additional styles just to make things look a bit nicer */
 body { background:yellowgreen; font:24px/32px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; color:#333; }
 .step { width:940px; margin:0 auto 24px auto; text-align:center;text-shadow: 2px 2px 2px white }
+.tips {
+    -webkit-animation-name: tips;
+    -webkit-animation-timing-function: ease;
+    -webkit-animation-duration: 1s;
+    -webkit-animation-iteration-count:infinite;
+    -webkit-animation-direction: alternate;
+}
+
+@-webkit-keyframes tips {
+    0% {
+        text-shadow: 0 0 0 white;
+        opacity: 0;
+    }
+
+    100% {
+        text-shadow: 0 0 5px yellow;
+        opacity: 1;
+    }
+}
