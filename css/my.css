@@ -13,10 +13,11 @@
 .post-title {
     margin: 10px;
     transition: all 1s ease;
-    text-shadow: 0 0 0 0 white;
+    text-shadow: 0 0 0 white;
 }
 
 .post-title:hover {
+    color: red;
     transform: translateX(20px);
-    text-shadow: 0 0 3px 3px yellow;
+    text-shadow: 0 0 5px yellow;
 }
