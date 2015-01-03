@@ -11,8 +11,9 @@
 }
 
 .post-title {
+    margin: 10px;
     transition: all 1s ease;
-    text-shadow: 0 0 0 0 yellow;
+    text-shadow: 0 0 0 0 white;
 }
 
 .post-title:hover {
