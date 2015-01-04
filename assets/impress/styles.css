@@ -2,11 +2,11 @@
 .impress-not-supported .no-support-message { display:block; }
 
 /* additional styles just to make things look a bit nicer */
-body { background:yellowgreen; font:24px/32px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; color:#333; }
-.step { width:940px; margin:0 auto 24px auto; text-align:center;text-shadow: 2px 2px 2px white }
+body { background:#eff6fa; font:24px/32px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; color:#333; }
+.step { width:940px; margin:0 auto 24px auto; text-align:center;text-shadow: 2px 2px 2px #698ebf}
 .tips {
     -webkit-animation-name: tips;
-    -webkit-animation-timing-function: ease;
+    -webkit-animation-timing-function: ease-in-out;
     -webkit-animation-duration: 1s;
     -webkit-animation-iteration-count:infinite;
     -webkit-animation-direction: alternate;

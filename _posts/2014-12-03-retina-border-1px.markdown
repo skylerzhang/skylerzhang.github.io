@@ -2,7 +2,7 @@
 layout: post
 title:  "在retina屏幕实现1px的border"
 date:   2014-12-03
-categories: js
+categories: css
 ---
 
 之前在web端，绝大多数屏幕的物理像素(点pt)和渲染像素(px)1:1。
