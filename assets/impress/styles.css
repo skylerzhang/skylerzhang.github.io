@@ -3,7 +3,7 @@
 
 /* additional styles just to make things look a bit nicer */
 body { background:#eff6fa; font:24px/32px "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif; color:#333; }
-.step { width:940px; margin:0 auto 24px auto; text-align:center;text-shadow: 2px 2px 2px #698ebf}
+.step { width:940px; margin:0 auto 24px auto; text-align:center;text-shadow: 2px 2px 2px yellowgreen}
 .tips {
     -webkit-animation-name: tips;
     -webkit-animation-timing-function: ease-in-out;
