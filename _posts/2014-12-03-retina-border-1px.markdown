@@ -7,11 +7,12 @@ categories: css
 
 之前在web端，绝大多数屏幕的物理像素(点pt)和渲染像素(px)1:1。
 起初的智能机物理像素和渲染像素也都是1:1,但这一切在iPhone4 发布之后就变了。从iPhone4 开始苹果收集都使用了retina屏幕，原来的1个点需要
-用2*2=4 个像素来渲染。
-在指定
+用2*2=4 个像素来渲染。在指定
+
     {% highlight html %}
         <meta name="viewport" content="width=device-width, initial-scale=1">
     {% endhighlight %}
+
 的情况下,我们在布局的时候必须把所有的2X设计稿的尺寸除以2才是我们想要的效果。
 但是，这样的话问题就来了，如果设计的某些尺寸就是1px 怎么办（border居多）？
 总不能让前端写 `border-width: 0.5px` 吧。

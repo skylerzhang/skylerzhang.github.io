@@ -5,6 +5,9 @@ date:   2014-06-09
 categories: js
 ---
 
+js里经常会发现一些让人非议所以的特性...
+
+
 {% highlight javascript %}
 var arr=new Array(1,2,3);
 alert(arr instanceof Array);      //true
