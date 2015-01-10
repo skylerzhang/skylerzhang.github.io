@@ -38,7 +38,7 @@ node.js 中一个经常被忽视的功能就是它可以用来创建命令行工
 开始编写前唯一的依赖就是node.js。你可以在命令行里运行 `which node`来查看它是否已经安装。如果你已经安装了你可能会得到一个类似下面这样的返回。如果返回是空
 那么你可能没有安装node，你可以从[node.org](www.nodejs.org)下载安装包。
 
-{% highlight linux %}
+{% highlight html %}
  $ which node
  /usr/local/bin/node
 {% endhighlight %}
