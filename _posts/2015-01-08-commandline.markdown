@@ -116,7 +116,7 @@ Node最有价值的方面就是它的开发者社区和他们所贡献的包。�
 
 现在更新你的脚本如下：
 
-{% highlight json %}
+{% highlight javascript %}
  #!/usr/bin/env node
 
  var program = require('commander');
@@ -220,3 +220,109 @@ if (!error && response.statusCode == 200) {
 }
 
 {% endhighlight %}
+
+为了更好的提炼结果，我们还可以加上更多的选项和参数。通过github api 我们可以获得许多选项，现在我选择通过所有者和语言来筛选。
+
+{% highlight javascript %}
+program
+    .version('0.0.1')
+    .usage('[options] <keywords>')
+    .option('-o, --owner [name]', 'Filter by the repositories owner')
+    .option('-l, --language [language]', 'Filter by the repositories language')
+    .parse(process.argv);
+
+if(!program.args.length) {
+    program.help();
+} else {
+    var keywords = program.args;
+
+    var url = 'https://api.github.com/search/repositories?sort=stars&order=desc&q='+keywords;
+
+    if(program.owner) {
+        url = url + '+user:' + program.owner;
+    }
+
+    if(program.language) {
+        url = url + '+language:' + program.language;
+    }
+
+    […]
+}
+{% endhighlight %}
+
+现在运行 `gitsearch jquery -o jquery -l JavaScript`命令，返回的所有提到过jquery的仓库中将只包含jquery拥有的和用javascript编写的。
+
+### 退出代码
+
+一个很重要的问题就是确保你的脚本能够正确的退出来，这里我们再一次使用了object对象。万一出错`process.exit`一定要大于0，然而一个正确的退出这个值应该等于0。
+这里我已经为HTTP请求后和出错添加了推出代码。当我们使用commander的`.help()`方法时，我们不需要推出代码，因为它会帮我们自动退出。
+
+{% highlight javascript %}
+if (!error && response.statusCode == 200) {
+    var body = JSON.parse(body);
+    for(var i = 0; i < body.items.length; i++) {
+        console.log(chalk.cyan.bold('Name: ' + body.items[i].name));
+        console.log(chalk.magenta.bold('Owner: ' + body.items[i].owner.login));
+        console.log(chalk.grey('Desc: ' + body.items[i].description + '\n'));
+        console.log(chalk.grey('Clone url: ' + body.items[i].clone_url + '\n'));
+    }
+    process.exit(0);
+} else if (error) {
+    console.log(chalk.red('Error: ' + error));
+    process.exit(1);
+}
+{% endhighlight %}
+
+### 合并
+
+最后我还加上了`--full`选项用来输出没有任何操作和样式的结果。
+
+    program
+        .version('0.0.1')
+        .usage('[options] <keywords>')
+        .option('-o, --owner [name]', 'Filter by the repositories owner')
+        .option('-l, --language [language]', 'Filter by the repositories language')
+        .option('-f, --full', 'Full output without any styling')
+        .parse(process.argv);
+
+{% highlight javascript %}
+if (!error && response.statusCode == 200) {
+    var body = JSON.parse(body);
+    if(program.full) {
+        console.log(body);
+    } else {
+        for(var i = 0; i < body.items.length; i++) {
+            console.log(chalk.cyan.bold('Name: ' + body.items[i].name));
+            console.log(chalk.magenta.bold('Owner: ' + body.items[i].owner.login));
+            console.log(chalk.grey('Desc: ' + body.items[i].description + '\n'));
+            console.log(chalk.grey('Clone url: ' + body.items[i].clone_url + '\n'));
+        }
+        process.exit(0);
+    }
+} else if (error) {
+    console.log(chalk.red('Error: ' + error));
+    process.exit(1);
+}
+{% endhighlight %}
+
+这样可以有效的利用其他可获得的命令行工具比如 less 、grep 、pbcopy。合并功能简单的方式就是用`pipeline`实现链式操作将上一个命令的输出作为下一个命令的输入。
+
+#### pbcopy
+
+`pbcopy`是一个简单的复制命令行输出的命令。用这个命令将允许你复制输出到其他的程序。
+
+    gitsearch jquery -f | pbcopy
+
+#### less
+
+`less`是一个分页命令，它能够将输出分割成若干易操作的片段，每次只展示一屏。
+
+#### grep
+
+`grep`是一个用正则表达式来搜索文本数据的工具。
+
+### 总结
+
+命令行工具对于简化任务和自动化执行重复操作非常有用，对于开发者而言NodeJs将是一个伟大的跳板，通过它开发者可以构建自己的命令而无需额外学习shell脚本。
+
+这是一个最基础的关于如何通过NodeJs构建命令行工具的例子。通过npm和gitub你可以找到许多非常有用的工具的实例。
