@@ -100,3 +100,17 @@ node.js 中一个经常被忽视的功能就是它可以用来创建命令行工
 现在执行`gitsearch`命令将会运行你的脚本。为了验证它，在你的脚本里加上`console.log("Hello World")`,然后重新运行`npm install -g`再执行你们的命令。
 
 ### 选项和参数
+
+但进行输入和输出工作时，命令行工具是十分有用的。参数和选项可以通过`process.argv`文件传进命令行。添加`console.log(process.argv);`到你的脚本并且带着参数运行你的命令
+你将会的得到如下的输出：
+
+{% highlight html %}
+ gitsearch -g
+ [ 'node', '/path/to/script/gitsearch.js', '-g' ]
+{% endhighlight %}
+
+Node最有价值的方面就是它的开发者社区和他们所贡献的包。这些包往往都是轻量级的,被用来做一些特定的工作。一个伟大的例子
+就是[Commander](https://github.com/visionmedia/commander.js/)，一个被设计用来构建命令行接口并且提供处理参数和选项的方法。
+
+在命令行里通过通过运行`npm install commander --save`来安装commander(添加`--save`选项`npm`将会自动升级你package.json里的依赖)。
+
