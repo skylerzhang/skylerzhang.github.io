@@ -114,3 +114,109 @@ Node最有价值的方面就是它的开发者社区和他们所贡献的包。�
 
 在命令行里通过通过运行`npm install commander --save`来安装commander(添加`--save`选项`npm`将会自动升级你package.json里的依赖)。
 
+现在更新你的脚本如下：
+
+{% highlight json %}
+ #!/usr/bin/env node
+
+ var program = require('commander');
+
+ program
+     .version('0.0.1')
+     .usage('<keywords>')
+     .parse(process.argv);
+
+ if(!program.args.length) {
+     program.help();
+ } else {
+     console.log('Keywords: ' + program.args);
+ }
+{% endhighlight %}
+
+这里我们用到了node的require函数来加载commander模块到脚本中,并且开始了一个命令的基本结构。
+
+Commander 对象的 `.args`属性只包含了从命令行传入的参数，类似于`process.argv`。所以这里我们用它来检测参数是否存在,因为我们这个命令行工具需要至少一个参数作为搜索关键词。
+
+现在带一个参数运行`gitsearch`就像`gitsearch jquery`这样，命令行将会输出`Keywords: jquery`(如果你没有传递参数进去，将会返回命令行`help`)。用commander的另一个好处
+就是他会根据你提供的选项信息自动产生`help`，你也可以通过`gitsearch -h`手动运行产生。
+
+使用带有参数的命令行，我们可以构建我们搜索github api端点
+
+{% highlight javascript %}
+ program
+     .version('0.0.1')
+     .usage('<keywords>')
+     .parse(process.argv);
+
+ if(!program.args.length) {
+     program.help();
+ } else {
+     var keywords = program.args;
+     var url = 'https://api.github.com/search/repositories?sort=stars&order=desc&q='+keywords;
+ }
+{% endhighlight %}
+
+因为github api 用的是 HTTP 端点所以我们需要发起一个HTTP请求。为了简单我们可以使用[request](https://www.npmjs.org/package/request)包
+
+    npm install request --save
+
+{% highlight javascript %}
+#!/usr/bin/env node
+
+var program = require('commander');
+var request = require('request');
+{% endhighlight %}
+
+现在我们可以用request 对我们指定的url发起一个`GET`了。
+
+{% highlight javascript %}
+request({
+    method: 'GET',
+    headers: {
+        'User-Agent': 'yourGithubUsername'
+    },
+    url: url
+}, function(error, response, body) {
+
+    if (!error && response.statusCode == 200) {
+        var body = JSON.parse(body);
+        console.log(body);
+    } else if (error) {
+        console.log('Error: ' + error);
+    }
+});
+{% endhighlight %}
+
+注意gitgub的api要求所有的请求都必须提供一个合法的`User-Agent`头，可以是你的用户名或者是你应用的名称。
+
+现在当你传`jquery`到你的`gitsearch`命令，将会得到一个json返回，里面所提到jquery的代码仓库中排名前一百的。
+这个输出包含许多数据，所以我们可以用[chalk](https://www.npmjs.com/package/chalk)给数据加点样式让它变得更易读一些。
+
+    npm install chalk --save
+
+{% highlight javascript %}
+#!/usr/bin/env node
+
+var program = require('commander');
+var request = require('request');
+var chalk = require('chalk');
+
+{% endhighlight %}
+
+对于这个例子，我们决定循环输出他的仓库名、所有者、描述和克隆地址,用chalk给他们加上样式。
+
+{% highlight javascript %}
+if (!error && response.statusCode == 200) {
+    var body = JSON.parse(body);
+
+    for(var i = 0; i < body.items.length; i++) {
+        console.log(chalk.cyan.bold.underline('Name: ' + body.items[i].name));
+        console.log(chalk.magenta.bold('Owner: ' + body.items[i].owner.login));
+        console.log(chalk.grey('Desc: ' + body.items[i].description + '\n'));
+        console.log(chalk.grey('Clone url: ' + body.items[i].clone_url + '\n'));
+    }
+} else if (error) {
+    console.log(chalk.red('Error: ' + error));
+}
+
+{% endhighlight %}
