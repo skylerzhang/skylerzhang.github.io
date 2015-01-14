@@ -317,9 +317,13 @@ if (!error && response.statusCode == 200) {
 
 `less`是一个分页命令，它能够将输出分割成若干易操作的片段，每次只展示一屏。
 
+    gitsearch jquery -f | less
+
 #### grep
 
 `grep`是一个用正则表达式来搜索文本数据的工具。
+
+    gitsearch jquery -f | grep watcher
 
 ### 总结
 
