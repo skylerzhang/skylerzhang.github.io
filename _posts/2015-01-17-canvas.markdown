@@ -25,10 +25,12 @@ categories: canvas
 
 而所谓的canvas状态大概包含以下三种
 
-####1.变换状态
+#####1.变换状态
 包括 translate、rotate、scale 。
-####2.当前的裁切
-####3.当前属性
+
+#####2.当前的裁切
+
+#####3.当前属性
 主要包括 strokeStyle, fillStyle, globalAlpha, lineWidth, lineCap, lineJoin, miterLimit, shadowOffsetX, shadowOffsetY, shadowBlur, shadowColor, globalCompositeOperation, font, textAlign, textBaseline.
 
 引用MDN上的例子说明：
