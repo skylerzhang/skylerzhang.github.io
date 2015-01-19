@@ -1,8 +1,61 @@
 ---
 layout: post
-title:  "对于canvas对象的封装"
+title:  "对于canvas的save 和 restore 方法"
 date:   2015-01-17
 categories: canvas
 ---
 
-//TODO
+之前写canvas代码的时候综上套上固定开头的结尾
+
+{% highlight javascript %}
+    ctx.beginPath()
+    ctx.save()
+        //TODO...
+    ctx.restore()
+    ctx.closePath()
+{% endhighlight %}
+
+只是从字面上认为，每次绘制结束后清空之前的路径和状态。
+
+其实canvas的`save()`方法类似于一个标记，标记了记录当时canvas的状态。而`restore()`方法的作用就是回到上一次记录的那个状态，所以原则上
+`save()` 的数量要大于等于 `restore()`的个数。
+
+具体实现原理就是canvas会生成一个状态栈，当我们每调用一次`save()`方法的时候canvas的当前状态就是会压入到状态栈内，而当我们调用`restore()`方法的
+时候状态栈会弹出最后一次压进去的状态，并将canvas的当前状态指向它。
+
+而所谓的canvas状态大概包含以下三种
+
+####1.变换状态
+包括 translate、rotate、scale 。
+####2.当前的裁切
+####3.当前属性
+主要包括 strokeStyle, fillStyle, globalAlpha, lineWidth, lineCap, lineJoin, miterLimit, shadowOffsetX, shadowOffsetY, shadowBlur, shadowColor, globalCompositeOperation, font, textAlign, textBaseline.
+
+引用MDN上的例子说明：
+
+{% highlight javascript %}
+    function draw() {
+      var ctx = document.getElementById('canvas').getContext('2d');
+
+      ctx.fillRect(0,0,150,150);   //  按照默认设置绘制一个矩形
+      ctx.save();                  //  保存默认状态
+
+      ctx.fillStyle = '#09F'       // 改变属性设置
+      ctx.fillRect(15,15,120,120); // 按照新设置绘制矩形
+
+      ctx.save();                  // 保存当前状态
+      ctx.fillStyle = '#FFF'       // 改变属性设置
+      ctx.globalAlpha = 0.5;
+      ctx.fillRect(30,30,90,90);   // 按照新设置绘制矩形
+
+      ctx.restore();               // 恢复之前的状态
+      ctx.fillRect(45,45,60,60); // 按照恢复之后的设置绘制一个新矩形
+
+      ctx.restore();               // 恢复到最初的状态
+      ctx.fillRect(60,60,30,30); // 按照最初的状态绘制一个矩形
+    }
+{% endhighlight %}
+
+效果如下：
+
+![canvas]({{ site.url }}/assets/images/2015-01-17-1.png)
