@@ -1,0 +1,8 @@
+---
+layout: post
+title:  "SVG和canvas的区别"
+date:   2015-01-25
+categories: svg
+---
+
+//todo
