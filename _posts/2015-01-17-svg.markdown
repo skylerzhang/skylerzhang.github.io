@@ -1,6 +1,6 @@
 ---
 layout: post
-title:  "对于canvas的save 和 restore 方法"
+title:  "SVG和canvas的区别"
 date:   2015-01-25
 categories: svg
 ---
