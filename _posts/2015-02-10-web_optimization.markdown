@@ -23,13 +23,13 @@ categories: web
 
 CloudFlare 是一种免费提供下载增强的服务:
 
-+CDN 服务
+####  CDN 服务
 
-+JavaScript, CSS,  HTML 压缩
+####  JavaScript, CSS,  HTML 压缩
 
-+停机备份服务
+####  停机备份服务
 
-+DDOS防御
+####  DDOS防御
 
-+基于位置的资源分发
+####  基于位置的资源分发
 
