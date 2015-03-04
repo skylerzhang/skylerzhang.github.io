@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <title>苍蝇爱屎蛋</title>
+    <style>
+        body {
+            text-align: center;
+        }
+        #turd {
+            margin-top: 10px;
+            border: solid 1px black;
+        }
+    </style>
+    <script src="common.js"></script>
+    <script src="resources.js"></script>
+    <script src="flying.js"></script>
+    <script src="flying_dead.js"></script>
+    <script src="turd_default.js"></script>
+    <script>
+
+        document.addEventListener('DOMContentLoaded', function(){
+            var oC = document.getElementById('turd');
+            var gd = oC.getContext('2d');
+            var W = oC.width, H = oC.height;
+            var num = 0;
+            var aFlying = [];
+            var aDeadFlying = [];
+
+            loadImages(imgArr,function(imgs){
+
+                oC.addEventListener('click', function(ev){
+
+                    for (var i=0; i<aFlying.length; i++){
+                        var x = ev.pageX - oC.offsetLeft;
+                        var y = ev.pageY - oC.offsetTop;
+
+                        var a = x- aFlying[i].x;
+                        var b = y - aFlying[i].y;
+
+                        var dis = Math.sqrt(a*a + b*b);
+
+                        if(dis<=aFlying[i].w/2){
+                            var deadFlying = new DeadFlying(aFlying[i].img, aFlying[i].w, aFlying[i].h, 3);
+                            deadFlying.x = aFlying[i].x;
+                            deadFlying.y = aFlying[i].y;
+                            deadFlying.rotate = aFlying[i].rotate;
+
+                            aDeadFlying.push(deadFlying);
+
+                            (function(deadFlying){
+                                setTimeout(function(){
+                                    for (var i = 0; i < aDeadFlying.length; i++) {
+                                        if (aDeadFlying[i] == deadFlying){
+                                            aDeadFlying.splice(i, 1);
+                                            break;
+                                        }
+                                    }
+                                }, 500);
+                            })(deadFlying);
+
+                            aFlying.splice(i--, 1);
+
+                        } else {
+
+                            //todo
+                        }
+
+                    }
+                }, false);
+
+                var flyings = [
+                    {img:imgs.flying, w:50, h:50},
+                    {img:imgs.bigFlying, w:100, h:100}
+                ];
+
+                var turd = new TurdDefault(imgs.turd_default, 100, 100, 4);
+                turd.x = W/2;
+                turd.y = H/2;
+
+                var turdLookAround =  new TurdLookAround(imgs.turd_lookaround, 100, 100, 8);
+                turdLookAround.x = W/2;
+                turdLookAround.y = H/2;
+
+                var turdFire = new TurdFire(imgs.turd_fire1, 1000, 1000, 27);
+                turdFire.x = W/2;
+                turdFire.y = H/2;
+
+
+                function nextFlyings(){
+                    setTimeout(function(){
+                        var flying = flyings[Math.floor(Math.random()*flyings.length)];
+                        var oF = new Flying(flying.img, flying.w, flying.h, 4);
+
+                        oF.x = Math.random() * W;
+                        if (Math.random() < 0.5 ) {
+                            oF.y = H + 100;
+                            oF.rotate = Math.random() * 90 - 45;
+                        } else {
+
+                            oF.y = -100;
+                            oF.rotate = Math.random() * 90 + 135;
+                        }
+                        aFlying.push(oF);
+
+                        nextFlyings();
+
+                    }, Math.random()*500);
+                }
+
+                nextFlyings();
+
+                //绘制
+                setInterval(function(){
+                    num ++;
+                    gd.clearRect(0, 0, W, H);
+
+                    //画屎蛋
+//                    if(num%200>50){
+//                        turd.draw(gd);
+//                    } else {
+//                        turdLookAround.draw(gd);
+//                    }
+
+
+                    //画苍蝇
+                    for (var i = 0; i < aFlying.length; i++){
+                        if (outOfScreen(aFlying[i], W, H, 100)){
+                            aFlying.splice(i--, 1);
+                            continue;
+                        }
+                        aFlying[i].move();
+                        aFlying[i].draw(gd);
+                    }
+
+                    //画死苍蝇
+
+                    for (var i = 0; i<aDeadFlying.length; i++){
+                        aDeadFlying[i].draw(gd);
+                    }
+
+                    //屎蛋火焰技能
+                    turdFire.draw(gd);
+
+                }, 16);
+
+                //帧频动画
+                setInterval(function(){
+                    for (var i = 0; i < aFlying.length; i++){
+                        aFlying[i].nextFrame();
+                    }
+
+                    for (var i = 0; i < aDeadFlying.length; i++){
+                        aDeadFlying[i].nextFrame();
+                    }
+                    //屎蛋左顾右盼
+                    //turdLookAround.nextFrame();
+
+                    turdFire.nextFrame();
+
+                },100);
+
+                //屎蛋眨眼
+//                setInterval(function(){
+//                    turd.nextFrame();
+//
+//                },200)
+
+
+
+            })
+        }, function(){
+            alert('加载失败');
+        } ,false)
+    </script>
+</head>
+<body>
+<canvas id="turd" width="800" height="600">
+
+</canvas>
+</body>
+</html>
