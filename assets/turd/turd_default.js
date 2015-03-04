@@ -48,3 +48,10 @@ function TurdFire(img, w, h, maxFrame){
 }
 
 TurdFire.prototype = new TurdDefault();
+
+//TurdFire.prototype.nextFrame = function (){
+//    this.nowFrame ++ ;
+//    if(this.nowFrame == this.maxFrame){
+//        return true;
+//    }
+//};

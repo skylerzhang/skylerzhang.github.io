@@ -43,3 +43,13 @@ function outOfScreen(obj, W, H, padding){
         return false;
     }
 }
+
+function distance (ev, oC, obj ){
+    var x = ev.pageX - oC.offsetLeft;
+    var y = ev.pageY - oC.offsetTop;
+
+    var a = x- obj.x;
+    var b = y - obj.y;
+
+    return Math.sqrt(a*a + b*b);
+}

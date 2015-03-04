@@ -39,3 +39,18 @@ DeadFlying.prototype.nextFrame = function(){
         this.nowFrame = 0;
     }
 };
+
+//烧死的苍蝇继承被拍死的苍蝇
+
+function FiredFlying(){
+    DeadFlying.apply(this, arguments);
+}
+
+FiredFlying.prototype = new DeadFlying();
+
+FiredFlying.prototype.nextFrame = function () {
+    this.nowFrame ++ ;
+    if(this.nowFrame == this.maxFrame){
+        return true;
+    }
+};

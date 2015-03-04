@@ -46,3 +46,11 @@ Flying.prototype.nextFrame = function(){
         this.nowFrame = 0;
     }
 };
+
+//大苍蝇继承标准苍蝇
+
+//function BigFlying(img, w, h, maxFrame){
+//    Flying.apply(this, arguments);
+//}
+//
+//BigFlying.prototype = new Flying();

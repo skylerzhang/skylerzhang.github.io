@@ -27,19 +27,47 @@
             var num = 0;
             var aFlying = [];
             var aDeadFlying = [];
+            var aFiredFlying =[];
+            var bFire = false;
+            var durFire = false;
 
             loadImages(imgArr,function(imgs){
 
                 oC.addEventListener('click', function(ev){
+                    aFiredFlying.length = 0;
+                    var disTurd = distance(ev, oC, turd);
+                    var disTurdLookAround = distance(ev, oC, turdLookAround);
+
+                    if (disTurd <= turd.w/2 || disTurdLookAround <= turdLookAround.w/2){
+
+                        bFire = true;
+                        turdFire.nowFrame = 0;
+                        setTimeout(function(){
+                            //bFire = false;
+//                            for(var i =0 ; i<aFlying.length; i++){
+//                                aFlying[i].img = imgs.flying_fired;
+//                                aFlying[i].maxFrame = 16;
+//                                aFlying[i].rotate = 0;
+//                            }
+                            durFire = true;
+
+
+                        }, 2700);
+
+                        setTimeout(function(){
+                            bFire = false;
+                            durFire = false;
+                            aFlying.length = 0;
+                            aFiredFlying.length = 0;
+                            //aFlying.length = 0;
+                        }, 1600+2700);
+
+
+                    }
 
                     for (var i=0; i<aFlying.length; i++){
-                        var x = ev.pageX - oC.offsetLeft;
-                        var y = ev.pageY - oC.offsetTop;
 
-                        var a = x- aFlying[i].x;
-                        var b = y - aFlying[i].y;
-
-                        var dis = Math.sqrt(a*a + b*b);
+                        var dis = distance(ev, oC, aFlying[i]);
 
                         if(dis<=aFlying[i].w/2){
                             var deadFlying = new DeadFlying(aFlying[i].img, aFlying[i].w, aFlying[i].h, 3);
@@ -62,12 +90,16 @@
 
                             aFlying.splice(i--, 1);
 
-                        } else {
-
-                            //todo
                         }
 
+                        //释放技能
+                        var firedFlying = new FiredFlying(imgs.flying_fired, 100, 100, 16);
+                        firedFlying.x = aFlying[i].x;
+                        firedFlying.y = aFlying[i].y;
+                        aFiredFlying.push(firedFlying);
+
                     }
+
                 }, false);
 
                 var flyings = [
@@ -83,7 +115,7 @@
                 turdLookAround.x = W/2;
                 turdLookAround.y = H/2;
 
-                var turdFire = new TurdFire(imgs.turd_fire1, 1000, 1000, 27);
+                var turdFire = new TurdFire(imgs.turd_fire2, 600, 600, 27);
                 turdFire.x = W/2;
                 turdFire.y = H/2;
 
@@ -116,32 +148,53 @@
                     num ++;
                     gd.clearRect(0, 0, W, H);
 
-                    //画屎蛋
-//                    if(num%200>50){
-//                        turd.draw(gd);
-//                    } else {
-//                        turdLookAround.draw(gd);
-//                    }
-
-
-                    //画苍蝇
-                    for (var i = 0; i < aFlying.length; i++){
-                        if (outOfScreen(aFlying[i], W, H, 100)){
-                            aFlying.splice(i--, 1);
-                            continue;
-                        }
-                        aFlying[i].move();
-                        aFlying[i].draw(gd);
-                    }
 
                     //画死苍蝇
-
                     for (var i = 0; i<aDeadFlying.length; i++){
                         aDeadFlying[i].draw(gd);
                     }
 
-                    //屎蛋火焰技能
-                    turdFire.draw(gd);
+                    if(bFire){
+                        //屎蛋火焰技能
+                        turdFire.draw(gd);
+                        if(durFire){
+                            //画烧死的苍蝇
+                            for (var i = 0; i < aFiredFlying.length; i++){
+                                aFiredFlying[i].draw(gd);
+                            }
+                        }else {
+                            //不动的苍蝇
+                            for (var i = 0; i < aFlying.length; i++){
+                                if (outOfScreen(aFlying[i], W, H, 100)){
+                                    aFlying.splice(i--, 1);
+                                    continue;
+                                }
+                                aFlying[i].draw(gd);
+                            }
+                        }
+
+
+                    } else {
+                        //画苍蝇
+
+                        for (var i = 0; i < aFlying.length; i++){
+                            if (outOfScreen(aFlying[i], W, H, 100)){
+                                aFlying.splice(i--, 1);
+                                continue;
+                            }
+//                        if(!bFire){
+//                            aFlying[i].move();
+//                        }
+                            aFlying[i].move();
+                            aFlying[i].draw(gd);
+                        }
+                        //画屎蛋
+                        if(num%200>50){
+                            turd.draw(gd);
+                        } else {
+                            turdLookAround.draw(gd);
+                        }
+                    }
 
                 }, 16);
 
@@ -151,23 +204,29 @@
                         aFlying[i].nextFrame();
                     }
 
+                    for (var i = 0; i < aFiredFlying.length; i++){
+                        aFiredFlying[i].nextFrame();
+                    }
+
                     for (var i = 0; i < aDeadFlying.length; i++){
                         aDeadFlying[i].nextFrame();
                     }
-                    //屎蛋左顾右盼
-                    //turdLookAround.nextFrame();
 
-                    turdFire.nextFrame();
+                    if(bFire){
+                        //火焰技能
+                        turdFire.nextFrame();
+                    } else {
+                        //屎蛋左顾右盼
+                        turdLookAround.nextFrame();
+                    }
 
                 },100);
 
                 //屎蛋眨眼
-//                setInterval(function(){
-//                    turd.nextFrame();
-//
-//                },200)
-
-
+                setInterval(function(){
+                    turd.nextFrame();
+                },200)
+                
 
             })
         }, function(){
