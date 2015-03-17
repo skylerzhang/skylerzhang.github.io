@@ -42,6 +42,44 @@ Fontello 可以让你从许多符号字体中只选择你需要的并且可以�
 
 #### 4.生成静态文件
 
-我们喜欢我们的动态脚本
+我们喜欢我们的动态脚本,但是如果静态页面可以满足我们的需要的时候，我们为什么还要用动态页面呢？这种问题我们在WordPress上经常看到——提交的内容通常不改变,但是广告和评论可能会变。
 
+答案？当一个页面可能改变的时候找到关键点，当这些关键点出现的时候产生静态文件。一个很棒的叫[Really Static](https://wordpress.org/plugins/really-static/)的WordPress工具
+可以帮我们在博客平台上完成这个工作。当然你的非WordPress CMS 系统需要自定义页面生成，但是比起速度的提升，这很值得你去做。
 
+如果你有内容需要在那些静态页面里轮换，比如广告或者链到更多的当前内容。请考虑用JavaScript 和 AJAX 来请求得到那些内容，那这个页面将是静态的，JavaScript将会从CDN上请求新内容，唯一需要烤炉的速度问题将会变成AJAX的请求。
+
+#### 5.延迟加载
+
+一个众所周知的网站缓慢的原因是页面上的请求过多引起的。在过去我们已经 CSS/image sprites , 拼接JavaScript、CSS 资源和[data URIs](https://developer.mozilla.org/zh-CN/docs/data_URIs)来解决这个问题。
+现在你还可以用延迟加载和或者简单的在页面中嵌入他们。
+
+{% highlight javascript %}
+    document.querySelectorAll('article pre').length && (function() {
+        var mediaPath = '/assets/';
+
+        var stylesheet = document.createElement('style');
+        stylesheet.setAttribute('type', 'text/css');
+        stylesheet.setAttribute('rel', 'stylesheet');
+        stylesheet.setAttribute('href', mediaPath + 'css/syntax.css');
+        document.head.appendChild(stylesheet);
+
+        var syntaxScript = document.createElement('script');
+        syntaxScript.async = 'true';
+        syntaxScript.src = mediaPath + 'js/syntax.js';
+        document.body.appendChild(syntaxScript);
+    })();
+{% endhighlight %}
+
+上面这个例子就是只有页面上的元素需要高亮的时候才会下载高亮语法的资源。如果用于高亮语法的css只有很少的几行怎么办？可以避免额外的请求直接讲他们嵌入到页面中。
+
+{% highlight html %}
+    <style type="text/css">
+    	<?php include('media/assets/highlight.css'); ?>
+    	</style>
+    </head>
+{% endhighlight %}
+
+或者你可以串联你用于高亮语法的css和整个网站的css——也是个不错的选择。
+
+你看，这些方法都难以置信的简单和迅速，如果你话几分钟来做他们那网站就回变流畅。当你思考网站获得的访问人数，页面浏览量的时候，你就会明白为什么这些细节的优化会如此重要。
