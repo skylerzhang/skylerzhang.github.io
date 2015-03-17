@@ -17,7 +17,7 @@ categories: web
 
 在改善网站加载时间方面，压缩图片是最简单直接的方法。Photoshop和其他图片编辑软件在图片压缩方面效率很低，每次请求都要下载额外的数据，有个好消息就是
 有许多工具可以消除这些额外的数据。MAC上我最喜欢的工具就是[ImageOptim](https://imageoptim.com/)。
-![ImageOptim](/assets/images/2015-02-10.jpg)
+![ImageOptim](http://davidwalsh.name/demo/image-optim-sample.jpg)
 
 #### 2.CloudFlare
 
