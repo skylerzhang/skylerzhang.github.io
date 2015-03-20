@@ -78,7 +78,7 @@
 
 .bs-wrap {
     position: relative;
-    margin: 200px auto;
+    margin: 100px auto;
     width: 450px;
     height: 250px;
     background: #c0b096;
@@ -100,6 +100,7 @@
     position: absolute;
     left:160px;
     top: 100px;
+    padding-top: 2px;
     width: 215px;
     height: 105px;
     border-radius: 5px;
@@ -109,7 +110,7 @@
 
 .wrap-mail {
     position: absolute;
-    top: 90px;
+    top: 111px;
     left: 74px;
     font-size: 25px;
 }
