@@ -82,6 +82,7 @@
     width: 450px;
     height: 250px;
     background: #c0b096;
+    border-radius: 5px;
 }
 
 .wrap-gt {
@@ -126,7 +127,7 @@
 .wrap-domain {
     position: absolute;
     left: 160px;
-    top: 84px;
+    top: 102px;
     width: 140px;
     height: 50px;
     border-radius: 5px 0 5px 0;
