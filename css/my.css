@@ -73,7 +73,7 @@
 .icon-globe:before { content: '\e804'; }
 
 .icon-globe-pos {
-    position: absolute; bottom: 0; left: 50%; margin-left: -25px;
+    position: absolute; bottom: 0; left: 50%; margin-left: -35px;
 }
 
 .bs-wrap {
