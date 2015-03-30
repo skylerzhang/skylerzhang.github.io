@@ -1,0 +1,29 @@
+---
+layout: post
+title:  "命令行版的caniuse.com"
+date:   2015-03-30
+categories: node
+---
+
+
+利用的数据是caniuse.com 作者开源在github上的，然后自己用node写了个小Server 放在 京东云擎上（为什么是京东云？因为免费~！）。
+
+### 安装方式
+```bash
+$ npm install yong -g
+```
+
+### 使用方式
+```bash
+$  yong border-radius
+```
+![ ](http://www.skylerzhang.com/assets/images/yong.jpg)
+### 支持传参
+```bash
+$  yong border-radius -b ie
+```
+![ ](http://www.skylerzhang.com/assets/images/yong-b.jpg)
+参数主要有 「ie」「chrome」「firefox」...
+
+
+github 地址：https://github.com/skylerzhang/yong
