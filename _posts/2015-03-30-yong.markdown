@@ -17,12 +17,16 @@ $ npm install yong -g
 ```bash
 $  yong border-radius
 ```
+
 ![ ](http://www.skylerzhang.com/assets/images/yong.jpg)
+
 ### 支持传参
 ```bash
 $  yong border-radius -b ie
 ```
+
 ![ ](http://www.skylerzhang.com/assets/images/yong-b.jpg)
+
 参数主要有 「ie」「chrome」「firefox」...
 
 
