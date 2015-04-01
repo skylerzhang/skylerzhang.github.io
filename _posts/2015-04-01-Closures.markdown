@@ -1,0 +1,8 @@
+---
+layout: post
+title:  "理解JavaScript闭包"
+date:   2015-04-01
+categories: js
+---
+
+本文翻译自[Closures](http://javascript.info/tutorial/closures)
