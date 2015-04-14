@@ -1,8 +1,24 @@
 ---
 layout: post
 title:  "理解JavaScript闭包"
-date:   2015-04-01
+date:   2015-04-02
 categories: js
 ---
 
 本文翻译自[Closures](http://javascript.info/tutorial/closures)
+
+从上一篇文章我们知道一个变量就是词法环境对象的一个属性。
+
+这里我们讨论一下访问外部变量和嵌套函数的方法，通过以下几个方面深入理解闭包。
+
+### 访问外部变量
+ 
+如果一个变量可以获得但是并不在词法环境内部怎么办？就像下面这个
+
+{% highlight javascript %}
+    var a = 5
+    function f() {
+      alert(a)
+    }
+{% endhighlight %}
+
