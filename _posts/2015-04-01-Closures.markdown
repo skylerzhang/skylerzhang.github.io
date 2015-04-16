@@ -7,7 +7,7 @@ categories: js
 
 本文翻译自[Closures](http://javascript.info/tutorial/closures)
 
-从上一篇文章我们知道一个变量就是词法环境对象的一个属性。
+从上一篇文章我们知道一个变量就是词法环境对象(`LexicalEnvironment` object)的一个属性。
 
 这里我们讨论一下访问外部变量和嵌套函数的方法，通过以下几个方面深入理解闭包。
 
@@ -22,3 +22,97 @@ categories: js
     }
 {% endhighlight %}
 
+在这个例子里解释器在外层的词法环境中找到这个变量。
+
+这个过程包括以下两步:
+
+1.首先当函数`f`创建的时候它并不是创建在空对象里的。
+
+有一个当前的词法环境对象，在上面的例子中这对词法环境对象就是`window`(在函数创建的时候`a`是`undefined`);
+
+![ ](http://javascript.info/files/tutorial/intro/scope/le_window1.png)
+
+当一个函数被创建的时候，它会得到一个隐藏的属性，名叫`[[Scope]]`(作用域)，它指向了当前的词法环境。
+
+![ ](http://javascript.info/files/tutorial/intro/scope/le_window2.png)
+
+2.之后，当函数运行的时候，它会创建自己的词法环境对象，并且将它关联到`[[Scope]]`属性上。
+所以当一个变量在函数自身的词法环境里找不到的时候，它就会到外层去找。
+
+![ ](http://javascript.info/files/tutorial/intro/scope/le_window3.png)
+
+如果一个变量是可读的，但是却在任何词法环境对象里都找不到，那就回产生错误。
+
+{% highlight javascript %}
+    function f() {
+      alert(x)      //reading x gives error, no x
+    }
+{% endhighlight %}
+
+一些语言构造可以拦截错误，比如 `typeof x`就可以拦截，如果没有`x`将会返回`undefined`，但是这是个例外。
+
+如果变量被设置了，但是在任何地方都找不到，然后它就会被创造在最外层的词法环境上，这个对象就是`window`。
+
+{% highlight javascript %}
+    function f() {
+      x = 5 // writing x puts it into window
+    }
+{% endhighlight %}
+
+###嵌套的函数
+
+一个函数可以被嵌套在另一个函数里面，形成一个词法环境的链条，我们也可以称之为作用域链。
+
+{% highlight javascript %}
+    var a = 1
+    function f() {
+      function g() {
+        alert(a)
+      }
+      return g 
+    }     
+    var func = f()
+    func() // 1
+
+{% endhighlight %}
+
+词法环境对象形成由内而外形成作用域链:
+
+{% highlight javascript %}
+    // LexicalEnvironment = window = {a:1, f: function}
+    var a = 1
+    function f() {
+      // LexicalEnvironment = {g:function}
+      function g() {
+        // LexicalEnvironment = {}
+        alert(a)
+      }     
+      return g 
+    }
+
+{% endhighlight %}
+
+所以函数`f`可以访问`g`,`a`和`f`。
+
+###闭包
+
+嵌套函数可能继续在内存中存货，在外层函数已经运行结束之后:
+
+{% highlight javascript %}
+    function User(name) {   
+      this.say = function(phrase) { 
+        alert(name + ' says: ' + phrase)
+      }
+    }
+    var user = new User('John')
+{% endhighlight %}
+
+标出词法环境：
+
+![ ](http://javascript.info/files/tutorial/intro/scope/user1.png)
+
+注意，`this`的上下文不取决于作用域和变量。它在这儿不参与。
+
+我们可以看到，`this.say`是`user`对象的一个属性，它将继续留存在内存中在'User'函数完成后。
+
+并且，如果你记得
