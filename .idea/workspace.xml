@@ -26,14 +26,14 @@
     <leaf>
       <file leaf-file-name="2015-02-10-web_optimization.markdown" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_posts/2015-02-10-web_optimization.markdown">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="71" column="12" selection-start-line="71" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
               <folding />
             </state>
-          </provider>
-          <provider editor-type-id="MarkdownPreviewEditor">
-            <state />
           </provider>
         </entry>
       </file>
@@ -59,14 +59,14 @@
       </file>
       <file leaf-file-name="2015-04-01-Closures.markdown" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/_posts/2015-04-01-Closures.markdown">
-          <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.9479452">
-              <caret line="117" column="8" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="8" />
-              <folding />
-            </state>
-          </provider>
           <provider editor-type-id="MarkdownPreviewEditor">
             <state />
+          </provider>
+          <provider selected="true" editor-type-id="text-editor">
+            <state vertical-scroll-proportion="0.9479452">
+              <caret line="314" column="41" selection-start-line="314" selection-start-column="41" selection-end-line="314" selection-end-column="41" />
+              <folding />
+            </state>
           </provider>
         </entry>
       </file>
@@ -82,14 +82,14 @@
       </file>
       <file leaf-file-name="2015-04-01-Initialization_of _functions_and_variables.markdown" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/_posts/2015-04-01-Initialization_of _functions_and_variables.markdown">
+          <provider editor-type-id="MarkdownPreviewEditor">
+            <state />
+          </provider>
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
               <folding />
             </state>
-          </provider>
-          <provider editor-type-id="MarkdownPreviewEditor">
-            <state />
           </provider>
         </entry>
       </file>
@@ -180,7 +180,6 @@
     </navigator>
     <panes>
       <pane id="Scope" />
-      <pane id="Scratches" />
       <pane id="ProjectPane">
         <subPane>
           <PATH>
@@ -289,6 +288,7 @@
           </PATH>
         </subPane>
       </pane>
+      <pane id="Scratches" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -752,14 +752,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_posts/2015-04-01-Initialization_of _functions_and_variables.markdown">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="8" column="0" selection-start-line="8" selection-start-column="0" selection-end-line="8" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
@@ -771,14 +771,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_posts/2015-02-10-web_optimization.markdown">
+      <provider editor-type-id="MarkdownPreviewEditor">
+        <state />
+      </provider>
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="71" column="12" selection-start-line="71" selection-start-column="0" selection-end-line="72" selection-end-column="0" />
           <folding />
         </state>
-      </provider>
-      <provider editor-type-id="MarkdownPreviewEditor">
-        <state />
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/.gitignore">
@@ -798,14 +798,14 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/_posts/2015-04-01-Closures.markdown">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.9479452">
-          <caret line="117" column="8" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="8" />
-          <folding />
-        </state>
-      </provider>
       <provider editor-type-id="MarkdownPreviewEditor">
         <state />
+      </provider>
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.9479452">
+          <caret line="314" column="41" selection-start-line="314" selection-start-column="41" selection-end-line="314" selection-end-column="41" />
+          <folding />
+        </state>
       </provider>
     </entry>
   </component>
