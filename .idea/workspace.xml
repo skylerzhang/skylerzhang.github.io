@@ -130,7 +130,10 @@
         <option value="$PROJECT_DIR$/_posts/2015-04-01-Closures.markdown" />
         <option value="$PROJECT_DIR$/_posts/2015-04-01-Initialization_of _functions_and_variables.markdown" />
         <option value="$PROJECT_DIR$/.gitignore" />
+<<<<<<< HEAD
         <option value="$PROJECT_DIR$/.idea/workspace.xml" />
+=======
+>>>>>>> 6d08bddb9900ff87bda614026d96024c0ac33e65
       </list>
     </option>
   </component>
@@ -418,6 +421,7 @@
   <component name="ToolWindowManager">
     <frame x="53" y="23" width="1387" height="877" extended-state="6" />
     <editor active="false" />
+
     <layout>
       <window_info id="Changes" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.32909784" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" weight="0.29733163" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -830,9 +834,11 @@
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.17391305" vertical-offset="15239" max-vertical-offset="16017">
           <caret line="809" column="21" selection-start-line="809" selection-start-column="21" selection-end-line="809" selection-end-column="21" />
+
           <folding />
         </state>
       </provider>
     </entry>
   </component>
+
 </project>
