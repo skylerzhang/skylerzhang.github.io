@@ -10,7 +10,7 @@ categories: canvas
 {% highlight javascript %}
     ctx.beginPath()
     ctx.save()
-        //TODO...
+        //代码
     ctx.restore()
     ctx.closePath()
 {% endhighlight %}

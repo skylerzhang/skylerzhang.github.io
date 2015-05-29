@@ -1,0 +1,316 @@
+---
+layout: post
+title:  "理解JavaScript闭包"
+date:   2015-04-02
+categories: js
+---
+
+本文翻译自[Closures](http://javascript.info/tutorial/closures)
+
+从上一篇文章我们知道一个变量就是词法环境对象(`LexicalEnvironment` object)的一个属性。
+
+这里我们讨论一下访问外部变量和嵌套函数的方法，通过以下几个方面深入理解闭包。
+
+### 访问外部变量
+ 
+如果一个变量可以获得但是并不在词法环境内部怎么办？就像下面这个
+
+{% highlight javascript %}
+    var a = 5
+    function f() {
+      alert(a)
+    }
+{% endhighlight %}
+
+在这个例子里解释器在外层的词法环境中找到这个变量。
+
+这个过程包括以下两步:
+
+1.首先当函数`f`创建的时候它并不是创建在空对象里的。
+
+有一个当前的词法环境对象，在上面的例子中这对词法环境对象就是`window`(在函数创建的时候`a`是`undefined`);
+
+![ ](http://javascript.info/files/tutorial/intro/scope/le_window1.png)
+
+当一个函数被创建的时候，它会得到一个隐藏的属性，名叫`[[Scope]]`(作用域)，它指向了当前的词法环境。
+
+![ ](http://javascript.info/files/tutorial/intro/scope/le_window2.png)
+
+2.之后，当函数运行的时候，它会创建自己的词法环境对象，并且将它关联到`[[Scope]]`属性上。
+所以当一个变量在函数自身的词法环境里找不到的时候，它就会到外层去找。
+
+![ ](http://javascript.info/files/tutorial/intro/scope/le_window3.png)
+
+如果一个变量是可读的，但是却在任何词法环境对象里都找不到，那就回产生错误。
+
+{% highlight javascript %}
+    function f() {
+      alert(x)      //reading x gives error, no x
+    }
+{% endhighlight %}
+
+一些语言构造可以拦截错误，比如 `typeof x`就可以拦截，如果没有`x`将会返回`undefined`，但是这是个例外。
+
+如果变量被设置了，但是在任何地方都找不到，然后它就会被创造在最外层的词法环境上，这个对象就是`window`。
+
+{% highlight javascript %}
+    function f() {
+      x = 5 // writing x puts it into window
+    }
+{% endhighlight %}
+
+###嵌套的函数
+
+一个函数可以被嵌套在另一个函数里面，形成一个词法环境的链条，我们也可以称之为作用域链。
+
+{% highlight javascript %}
+    var a = 1
+    function f() {
+      function g() {
+        alert(a)
+      }
+      return g 
+    }     
+    var func = f()
+    func() // 1
+
+{% endhighlight %}
+
+词法环境对象形成由内而外形成作用域链:
+
+{% highlight javascript %}
+    // LexicalEnvironment = window = {a:1, f: function}
+    var a = 1
+    function f() {
+      // LexicalEnvironment = {g:function}
+      function g() {
+        // LexicalEnvironment = {}
+        alert(a)
+      }     
+      return g 
+    }
+
+{% endhighlight %}
+
+所以函数`f`可以访问`g`,`a`和`f`。
+
+###闭包
+
+嵌套函数可能继续在内存中存货，在外层函数已经运行结束之后:
+
+{% highlight javascript %}
+    function User(name) {   
+      this.say = function(phrase) { 
+        alert(name + ' says: ' + phrase)
+      }
+    }
+    var user = new User('John')
+{% endhighlight %}
+
+标出词法环境：
+
+![ ](http://javascript.info/files/tutorial/intro/scope/user1.png)
+
+注意，`this`的上下文不取决于作用域和变量。它在这儿不参与。
+
+我们可以看到，`this.say`是`user`对象的一个属性，它将继续留存在内存中在'User'函数完成后。
+
+并且，如果你还记得当`this.say`被创建的时候，它会得到一个内部索引`this.say.[[Scope]]`指向当前的词法环境对象。
+所以，当前`User`的词法环境对象会一直驻留在内存当中。所有`User`的内部变量和属性也同样会被保留不会被当成垃圾回收。
+
+这一切都是为了确保在将来当内部函数要外部变量的时候能够访问的到。
+
+    1、内部函数保留一个对外部词法环境对象的引用
+    
+    2、即使外部函数已经执行完毕，内部函数仍然可以访问到外部函数的变量。
+    
+    3、浏览器将保存这个词法环境对象和外部函数的所有属性、变量直到有一个内部函数引用它。
+    
+    这就是闭包。
+    
+####易变的词法环境
+
+许多函数可能公用一个外部的词法环境。在这种情况下他们可以改变它的属性。
+在下面这个例子，`this.fixName`改变在`this.say`里被使用的`name`:
+
+{% highlight javascript %}
+    function User(name) {         
+      this.fixName = function() {
+        name = 'Mr.' + name.toUpperCase()
+      }
+      this.say = function(phrase) { 
+        alert(name + ' says: ' + phrase)
+      }
+    }
+    var user = new User('John')
+    // (1)
+    user.fixName()
+    // (2)
+    user.say("I'm alive!") // Mr.JOHN says: I'm alive!
+
+{% endhighlight %}
+
+这里`user.fixName.[[Scope]]`和`user.say.[[Scope]]`作用域都指向同一个词法环境对象。对应到`new User`这个具体函数。
+
+从(1)到(2)外部函数词法环境对象的`name`属性已经更新，所以两个函数都可以看到变量的变化。
+
+    在外部词法环境里的变量可以改变，
+    
+    内部函数总是看到它最新的值。
+    
+####臭名昭著的闭包循环
+
+下面的例子里包含了有趣的小伎俩，通过一个例子来示范一下。
+
+{% highlight javascript %}
+    function makeArmy() {
+      var shooters = []     
+      for(var i=0; i<10; i++) {
+        var shooter = function() { // a shooter is a function
+          alert(i) // which should alert it's number
+        }
+        shooters.push(shooter)   
+      }
+      return shooters
+    }
+    var army = makeArmy()     
+    var shooter = army[0] // first shooter
+    shooter() // alerts 10, should be 0
+    shooter = army[5] // 5th shooter
+    shooter() // alerts 10, should be 5
+    // all shooters alert same: 10 instead of 1,2,3...10.
+{% endhighlight %}
+
+为什么每个shooter弹出的数字都是一样的呢？怎样才能让每个shooter都弹出他们相应的数字
+
+#####解决方案
+
+注意函数`shooter`并没有一个名叫`i`的变量。
+
+所以当它被调用的时候，解释器会从外部的词法环境中来获取`i`。
+
+问题是在`shooter`函数运行的时候，函数makeArmy已经执行结束了。
+
+循环已经结束，并且现在的变量`i`也已经变成了10。
+
+有两种方式解决这个问题。
+
+第一种就是在`shooter`函数内部放一个正确的值。
+
+{% highlight javascript %}
+    function makeArmy() {     
+      var shooters = []
+      for(var i=0; i<10; i++) {
+        var shooter = function() {
+          alert( arguments.callee.i )
+        }
+        shooter.i = i
+        shooters.push(shooter)   
+      }
+      return shooters
+    }
+    var army = makeArmy()
+    army[0]() // 0
+    army[1]() // 1
+{% endhighlight %}
+
+另一种更好的解决方案是用一个额外的函数去留住当前的`i`值。
+
+{% highlight javascript %}
+    function makeArmy() {     
+      var shooters = []     
+      for(var i=0; i<10; i++) {     
+        var shooter = function(i) {     
+          return function() {
+            alert( i )
+          }
+        }(i)     
+        shooters.push(shooter)   
+      }     
+      return shooters
+    }     
+    var army = makeArmy()
+    army[0]() // 0
+    army[1]() // 1
+{% endhighlight %}
+
+让我们仔细看下面这段代码：
+
+{% highlight javascript %}
+    var shooter = function(i) {
+      return function() {
+        alert( i )
+      }
+    }(i)
+{% endhighlight %}
+
+这里实际的shooting函数是用一个创建和执行在同一个地方的匿名函数`function(i)`的结果来创建的。
+
+所以当执行`alert(i)`的时候，它将从匿名函数的词法环境中寻找。
+
+所以匿名函数记录了当前的`i`在它自己的词法环境总并且允许shooter函数访问它。
+
+最后一种方法是用一个临时函数包住整个循环。有时候这样做可读性更高。
+
+{% highlight javascript %}
+    function makeArmy() {     
+      var shooters = []     
+      for(var i=0; i<10; i++) (function(i) {     
+        var shooter = function() {
+          alert( i )
+        }         
+        shooters.push(shooter)        
+      })(i)
+      return shooters
+    }
+    var army = makeArmy()
+    army[0]() // 0
+    army[1]() // 1
+
+{% endhighlight %}
+
+#####`new Function`的作用域
+
+有一个例外的通用作用域绑定规则。当你用`new Function`创建一个函数的时候，它的作用域指向`window`而不是当前的词法环境对象。
+
+下面这个例子示范了一个用`new Function`创建的函数是怎么样忽略内部变量去找全局变量的。
+
+{% highlight javascript %}
+    window.a = 1;
+    function getFunc() {
+      var a = 2;
+     
+      var func = function() { alert(a) }
+    
+      return func; 
+    }
+   
+    getFunc()() // 2, from LexicalEnvironemnt of getFunc
+
+{% endhighlight %}
+
+现在用 `new Function`的方式创建函数
+
+{% highlight javascript %}
+    window.a = 1
+    function getFunc() {
+      var a = 2
+     
+      var func = new Function('', 'alert(a)')  
+      return func
+    }
+    
+    getFunc()() // 1, from window
+{% endhighlight %}
+
+####总结
+
+我们主要讨论了一下几个话题
+
+    1、JavaScript是如何处理变量的
+    2、作用域是如何工作的
+    3、什么是闭包和如何实用闭包
+    4、使用闭包时的一些陷阱和技巧
+    
+闭包在JS里就像是食盐，没有它你也能活但是活不久。通常情况下闭包在JS里无处不在。
+

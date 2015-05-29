@@ -5,4 +5,5 @@ date:   2015-01-25
 categories: svg
 ---
 
+canvas 和 svg 最大的区别就是后者能够加事件。
 //todo

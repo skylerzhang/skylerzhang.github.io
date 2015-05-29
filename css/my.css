@@ -22,3 +22,114 @@
     transform: translateX(20px);
     text-shadow: 0 0 5px yellow;
 }
+
+/* 名片 */
+
+@font-face {
+    font-family: 'fontello';
+    src: url('./font/fontello.eot?1660484');
+    src: url('./font/fontello.eot?1660484#iefix') format('embedded-opentype'),
+    url('./font/fontello.woff?1660484') format('woff'),
+    url('./font/fontello.ttf?1660484') format('truetype'),
+    url('./font/fontello.svg?1660484#fontello') format('svg');
+    font-weight: normal;
+    font-style: normal;
+}
+
+[class^="icon-"]:before, [class*=" icon-"]:before {
+    font-family: "fontello";
+    font-style: normal;
+    font-weight: normal;
+    speak: none;
+
+    display: inline-block;
+    text-decoration: inherit;
+    width: 1em;
+    margin-right: .2em;
+    text-align: center;
+    /* opacity: .8; */
+
+    /* For safety - reset parent styles, that can break glyph codes*/
+    font-variant: normal;
+    text-transform: none;
+
+    /* fix buttons height, for twitter bootstrap */
+    line-height: 1em;
+
+    /* Animation center compensation - margins should be symmetric */
+    /* remove if not needed */
+    margin-left: .2em;
+
+    /* you can be more comfortable with increased icons size */
+    /* font-size: 120%; */
+
+    /* Uncomment for 3D effect */
+    /* text-shadow: 1px 1px 1px rgba(127, 127, 127, 0.3); */
+    color: #c0b096;
+    font-size: 50px;
+}
+.icon-github:before { content: '\e802'; }
+.icon-twitter:before { content: '\e803'; }
+.icon-globe:before { content: '\e804'; }
+
+.icon-globe-pos {
+    position: absolute; bottom: 0; left: 50%; margin-left: -35px;
+}
+
+.bs-wrap {
+    position: relative;
+    margin: 100px auto;
+    width: 450px;
+    height: 250px;
+    background: #c0b096;
+    border-radius: 5px;
+}
+
+.wrap-gt {
+    position: absolute;
+    left: 140px;
+    top: 45px;
+    padding-top: 2px;
+    width: 160px;
+    height: 105px;
+    border-radius: 5px;
+    background: #bb9e76;
+    text-align: center;
+}
+
+.wrap-web {
+    position: absolute;
+    left:160px;
+    top: 100px;
+    padding-top: 2px;
+    width: 215px;
+    height: 105px;
+    border-radius: 5px;
+    background: #bb9e76;
+    text-align: center;
+}
+
+.wrap-mail {
+    position: absolute;
+    top: 111px;
+    left: 74px;
+    font-size: 25px;
+}
+
+.wrap-mail span:nth-child(odd){
+    color:#bb9e76;
+}
+
+.wrap-mail span:nth-child(even){
+    color:#c0b096;
+}
+
+.wrap-domain {
+    position: absolute;
+    left: 160px;
+    top: 102px;
+    width: 140px;
+    height: 50px;
+    border-radius: 5px 0 5px 0;
+    background: #c0b096;
+}
