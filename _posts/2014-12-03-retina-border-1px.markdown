@@ -79,6 +79,6 @@ categories: css
 原理就是1：1渐变，上面的一半是border颜色，下面的一半是背景颜色。
 
 
-另外还有用 `svg`, `box-shadow` 等等好多方法，但是我个人还是最喜欢第二种...虽然该颜色什么的比较麻烦，但是后期维护会省事很多。
+另外还有用 `svg`, `box-shadow` 等等好多方法，但是我个人还是最喜欢第一种...虽然该颜色什么的比较麻烦，但是后期维护会省事很多。
 
 [border-image]:http://www.zhangxinxu.com/wordpress/2010/01/css3-border-image%E8%AF%A6%E8%A7%A3%E3%80%81%E5%BA%94%E7%94%A8%E5%8F%8Ajquery%E6%8F%92%E4%BB%B6/
