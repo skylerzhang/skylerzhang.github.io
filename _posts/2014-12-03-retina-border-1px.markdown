@@ -10,7 +10,7 @@ tag: css
 起初的智能机物理像素和渲染像素也都是1:1,但这一切在iPhone4 发布之后就变了。从iPhone4 开始苹果收集都使用了retina屏幕，原来的1个点需要
 用2*2=4 个像素来渲染。在指定
 
-    {% highlight html %}
+    {% highlight html linenos%}
         <meta name="viewport" content="width=device-width, initial-scale=1">
     {% endhighlight %}
 
@@ -22,7 +22,7 @@ tag: css
 
 ##方法一，利用border-image：
 
-    {% highlight css %}
+    {% highlight css linenos%}
         border-width: 1px;
         border-image: url(border.gif) 2 repeat;
     {% endhighlight %}
@@ -38,7 +38,7 @@ tag: css
 
 ##方法二，直接上0.5px;
 
-    {% highlight css %}
+    {% highlight css linenos%}
         border: 0.5px solid red;
     {% endhighlight %}
 
@@ -47,7 +47,7 @@ tag: css
 
 ##方法三，利用缩放：
 
-{% highlight css %}
+{% highlight css linenos%}
     border:before {
         position: absolute;
         top: 0;
@@ -69,7 +69,7 @@ tag: css
 
 ##方法四，利用渐变：
 
-{% highlight css %}
+{% highlight css linenos%}
     background:
     	linear-gradient(180deg, black, black 50%, transparent 50%) top    left  / 100% 1px no-repeat,
     	linear-gradient(90deg,  black, black 50%, transparent 50%) top    right / 1px 100% no-repeat,

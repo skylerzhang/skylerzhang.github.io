@@ -60,7 +60,7 @@ node.js 中一个经常被忽视的功能就是它可以用来创建命令行工
 
 创建命令最简单的方式就是通过调用路径和文件名来运行你的脚本。
 
-{% highlight html %}
+{% highlight html linenos%}
  ./gitsearch.js
 {% endhighlight %}
 
@@ -70,7 +70,7 @@ node.js 中一个经常被忽视的功能就是它可以用来创建命令行工
 
 为了让NodeJs脚本能通过npm来安装，我们需要在和`gitsearch.js`相同目录下创建一个相应的`package.json`文件。
 
-{% highlight json %}
+{% highlight json linenos%}
 {
     "name": "gitsearch",
     "version": "0.0.1",
@@ -91,7 +91,7 @@ node.js 中一个经常被忽视的功能就是它可以用来创建命令行工
 最重要的部分是这里`"bin": {"gitsearch": "gitsearch.js"}`,他将`gitsearch`命令关联到了`gitsearch.js`文件。在命令行里进入到相应的文件夹
 通过npm来全局安装你的脚本。
 
-{% highlight html %}
+{% highlight html linenos%}
  cd ./path/to/directory/
  sudo npm install -g
 {% endhighlight %}
@@ -105,7 +105,7 @@ node.js 中一个经常被忽视的功能就是它可以用来创建命令行工
 但进行输入和输出工作时，命令行工具是十分有用的。参数和选项可以通过`process.argv`文件传进命令行。添加`console.log(process.argv);`到你的脚本并且带着参数运行你的命令
 你将会的得到如下的输出：
 
-{% highlight html %}
+{% highlight html linenos%}
  gitsearch -g
  [ 'node', '/path/to/script/gitsearch.js', '-g' ]
 {% endhighlight %}
@@ -117,7 +117,7 @@ Node最有价值的方面就是它的开发者社区和他们所贡献的包。�
 
 现在更新你的脚本如下：
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
  #!/usr/bin/env node
 
  var program = require('commander');
@@ -143,7 +143,7 @@ Commander 对象的 `.args`属性只包含了从命令行传入的参数，类�
 
 使用带有参数的命令行，我们可以构建我们搜索github api端点
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
  program
      .version('0.0.1')
      .usage('<keywords>')
@@ -161,7 +161,7 @@ Commander 对象的 `.args`属性只包含了从命令行传入的参数，类�
 
     npm install request --save
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
 #!/usr/bin/env node
 
 var program = require('commander');
@@ -170,7 +170,7 @@ var request = require('request');
 
 现在我们可以用request 对我们指定的url发起一个`GET`了。
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
 request({
     method: 'GET',
     headers: {
@@ -195,7 +195,7 @@ request({
 
     npm install chalk --save
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
 #!/usr/bin/env node
 
 var program = require('commander');
@@ -206,7 +206,7 @@ var chalk = require('chalk');
 
 对于这个例子，我们决定循环输出他的仓库名、所有者、描述和克隆地址,用chalk给他们加上样式。
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
 if (!error && response.statusCode == 200) {
     var body = JSON.parse(body);
 
@@ -224,7 +224,7 @@ if (!error && response.statusCode == 200) {
 
 为了更好的提炼结果，我们还可以加上更多的选项和参数。通过github api 我们可以获得许多选项，现在我选择通过所有者和语言来筛选。
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
 program
     .version('0.0.1')
     .usage('[options] <keywords>')
@@ -258,7 +258,7 @@ if(!program.args.length) {
 一个很重要的问题就是确保你的脚本能够正确的退出来，这里我们再一次使用了object对象。万一出错`process.exit`一定要大于0，然而一个正确的退出这个值应该等于0。
 这里我已经为HTTP请求后和出错添加了推出代码。当我们使用commander的`.help()`方法时，我们不需要推出代码，因为它会帮我们自动退出。
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
 if (!error && response.statusCode == 200) {
     var body = JSON.parse(body);
     for(var i = 0; i < body.items.length; i++) {
@@ -286,7 +286,7 @@ if (!error && response.statusCode == 200) {
         .option('-f, --full', 'Full output without any styling')
         .parse(process.argv);
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
 if (!error && response.statusCode == 200) {
     var body = JSON.parse(body);
     if(program.full) {

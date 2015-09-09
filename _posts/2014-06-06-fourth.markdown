@@ -14,7 +14,7 @@ NO，造轮子那是大神的事，我等小菜果断使用插件。
 
 首先要去[多说官网][duoshuo]注册一个帐号，然后到“工具”里找到"通用代码" 如下：
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-thread-key="请将此处替换成文章在你的站点中的ID" 
 	data-title="请替换成文章的标题" data-url="请替换成文章的网址"></div>
@@ -40,7 +40,7 @@ var duoshuoQuery = {short_name:"username"};
 所以我们需要，修改上边的`div`自定义属性，来区分每一篇文章，这里根据模板最简单的就是选择`data-title`来区分，因为其他的jekyll模板里没有现成的，这样有个弊端就是如果你修改了文章标题那这篇文章之前的一些评论都就不显示了...
 修改后代码如下
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
 <!-- 多说评论框 start -->
 	<div class="ds-thread" data-title="{{ page.title }}"></div>
 <!-- 多说评论框 end -->

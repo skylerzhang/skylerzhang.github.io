@@ -8,7 +8,7 @@ tag: canvas
 
 之前写canvas代码的时候综上套上固定开头的结尾
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
     ctx.beginPath()
     ctx.save()
         //代码
@@ -36,7 +36,7 @@ tag: canvas
 
 引用MDN上的例子说明：
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
     function draw() {
       var ctx = document.getElementById('canvas').getContext('2d');
 

@@ -55,7 +55,7 @@ Fontello 可以让你从许多符号字体中只选择你需要的并且可以�
 一个众所周知的网站缓慢的原因是页面上的请求过多引起的。在过去我们已经 CSS/image sprites , 拼接JavaScript、CSS 资源和[data URIs](https://developer.mozilla.org/zh-CN/docs/data_URIs)来解决这个问题。
 现在你还可以用延迟加载和或者简单的在页面中嵌入他们。
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
     document.querySelectorAll('article pre').length && (function() {
         var mediaPath = '/assets/';
 
@@ -74,7 +74,7 @@ Fontello 可以让你从许多符号字体中只选择你需要的并且可以�
 
 上面这个例子就是只有页面上的元素需要高亮的时候才会下载高亮语法的资源。如果用于高亮语法的css只有很少的几行怎么办？可以避免额外的请求直接讲他们嵌入到页面中。
 
-{% highlight html %}
+{% highlight html linenos%}
     <style type="text/css">
     	<?php include('media/assets/highlight.css'); ?>
     	</style>

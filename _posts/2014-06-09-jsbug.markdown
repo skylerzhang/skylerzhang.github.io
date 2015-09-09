@@ -9,7 +9,7 @@ tag: js
 js里经常会发现一些让人非议所以的特性...
 
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
 var arr=new Array(1,2,3);
 alert(arr instanceof Array);      //true
 alert(arr instanceof Object);    //true
@@ -17,20 +17,20 @@ alert(Array instanceof Object); //true
 #儿子认爹也认爷爷
 {% endhighlight %}
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
 alert(arr instanceof Array);       //true
 alert(Array instanceof Function);  //true
 alert(arr instanceof Function);   //false
 #儿子认爹不认爷爷
 {% endhighlight %}
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
 alert(Object instanceof Function);   //true
 alert(Function instanceof Object);   //true
 #兄弟俩互相喊爹
 {% endhighlight %}
 
-{% highlight javascript %}
+{% highlight javascript linenos%}
 alert(Function instanceof Function);  //true
 alert(Object instanceof Object);   //true
 #又当爹又当儿

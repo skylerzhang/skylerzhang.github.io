@@ -18,7 +18,7 @@ tag: apache
 
 2、 文件里又这么一段
 
-{% highlight html %}
+{% highlight html linenos%}
 <Directory "/Library/WebServer/Documents">
     
     Options FollowSymLinks 
@@ -32,7 +32,7 @@ tag: apache
 {% endhighlight %}
 
 3、修改成
-{% highlight xml %}
+{% highlight xml linenos%}
 <Directory "/Library/WebServer/Documents">
     
     Options Indexes FollowSymLinks
