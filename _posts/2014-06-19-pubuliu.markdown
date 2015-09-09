@@ -3,6 +3,7 @@ layout: post
 title:  "BAE+NODEJS+MYSQL搭建瀑布流网站"
 date:   2014-06-19 
 categories: nodejs
+tag: nodejs
 ---
 
 最近开始接触`nodejs`，想做一个网站实践一下，当然以我目前的水平太复杂的网站是做不了的。所以就决定做一个简单且常见的瀑布流网站。

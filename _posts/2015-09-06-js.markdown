@@ -3,6 +3,7 @@ layout: post
 title:  "javascript里的安位非(~)运算"
 date:   2015-09-06
 categories: js
+tag: js
 ---
 
 先看一下《高程》对于按位非的定义
@@ -17,7 +18,7 @@ categories: js
     
 还是以25这个数值为例子
 
-{% highlight javascript %}
+{% highlight javascript%}
     var num1 = 25;              //二进制 0000 0000 0000 0000 0000 0000 0001 1001
     var num2 = ~num1;           //二进制 1111 1111 1111 1111 1111 1111 1110 0110
     alert(num2);                //-26

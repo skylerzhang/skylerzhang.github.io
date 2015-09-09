@@ -3,6 +3,7 @@ layout: post
 title:  "欢乐的js"
 date:   2014-06-09 
 categories: js
+tag: js
 ---
 
 js里经常会发现一些让人非议所以的特性...

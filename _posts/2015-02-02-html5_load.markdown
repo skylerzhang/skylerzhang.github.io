@@ -3,6 +3,7 @@ layout: post
 title:  "H5前端页面优化"
 date:   2015-02-02
 categories: html5
+tag: html5
 ---
 
 发现了一张很好的关于h5前端优化的汇总图

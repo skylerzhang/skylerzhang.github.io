@@ -3,6 +3,7 @@ layout: post
 title:  "window.location方法获取URL"
 date:   2014-08-05 
 categories: js
+tag : web
 ---
 
 

@@ -3,6 +3,7 @@ layout: post
 title:  "基于node构建命令行工具【译】"
 date:   2015-1-08 23:00:00
 categories: node
+tag: node
 ---
 
 本文翻译自[Command-line utilities with Node.js](http://cruft.io/posts/node-command-line-utilities/)

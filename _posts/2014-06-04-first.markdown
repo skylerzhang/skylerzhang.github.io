@@ -3,6 +3,7 @@ layout: post
 title:  "利用github搭建个人网站——建立仓库"
 date:   2014-06-04 15:06:54
 categories: web
+tag: web
 ---
 
 github的pages功能可以帮助用户建立免费的个人站和项目主站，乍一看[pages][page]满眼英文，其实细细一品也就那么回事。

@@ -3,6 +3,7 @@ layout: post
 title:  "七个必备的JavaScript函数"
 date:   2015-06-14
 categories: js
+tag: js
 ---
 
 本文翻译自[7 Essential JavaScript Functions](http://davidwalsh.name/essential-javascript-functions)

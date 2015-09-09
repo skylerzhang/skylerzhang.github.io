@@ -3,6 +3,7 @@ layout: post
 title:  "对于canvas的save 和 restore 方法"
 date:   2015-01-17
 categories: canvas
+tag: canvas
 ---
 
 之前写canvas代码的时候综上套上固定开头的结尾

@@ -3,6 +3,7 @@ layout: post
 title:  "我的2014"
 date:   2015-1-02 23:00:00
 categories: summary
+tag: summary
 ---
 
 用几个关键词来描述一下我这匆匆的2014

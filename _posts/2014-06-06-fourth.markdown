@@ -3,6 +3,7 @@ layout: post
 title:  "利用github搭建个人网站——添加多说评论框"
 date:   2014-06-06 02:07:00
 categories: web
+tag: web
 ---
 
 一个博客一定要能评论，所以就必须有评论框。自己写一个？

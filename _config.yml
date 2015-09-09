@@ -9,3 +9,4 @@ username: skylerzhang
 # Build settings
 markdown: kramdown
 permalink: pretty
+pygments: true

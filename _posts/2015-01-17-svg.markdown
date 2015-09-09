@@ -3,6 +3,7 @@ layout: post
 title:  "SVG和canvas的区别"
 date:   2015-01-25
 categories: svg
+tag: svg
 ---
 
 canvas 和 svg 最大的区别就是后者能够加事件。

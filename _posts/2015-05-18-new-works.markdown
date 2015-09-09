@@ -3,6 +3,7 @@ layout: post
 title:  "新工作，新起点"
 date:   2015-05-18
 categories: work
+tag: work
 ---
 
 已经正式入职美团了，周围多了很多同事，也是第一次加入这么大的团队，感觉未来是机遇和挑战并存！
