@@ -17,10 +17,10 @@ tag: js
 如果一个变量可以获得但是并不在词法环境内部怎么办？就像下面这个
 
 {% highlight javascript linenos%}
-    var a = 5
-    function f() {
-      alert(a)
-    }
+var a = 5
+function f() {
+  alert(a)
+}
 {% endhighlight %}
 
 在这个例子里解释器在外层的词法环境中找到这个变量。
@@ -45,9 +45,9 @@ tag: js
 如果一个变量是可读的，但是却在任何词法环境对象里都找不到，那就回产生错误。
 
 {% highlight javascript linenos%}
-    function f() {
-      alert(x)      //reading x gives error, no x
-    }
+function f() {
+  alert(x)      //reading x gives error, no x
+}
 {% endhighlight %}
 
 一些语言构造可以拦截错误，比如 `typeof x`就可以拦截，如果没有`x`将会返回`undefined`，但是这是个例外。
@@ -55,9 +55,9 @@ tag: js
 如果变量被设置了，但是在任何地方都找不到，然后它就会被创造在最外层的词法环境上，这个对象就是`window`。
 
 {% highlight javascript linenos%}
-    function f() {
-      x = 5 // writing x puts it into window
-    }
+function f() {
+  x = 5 // writing x puts it into window
+}
 {% endhighlight %}
 
 ###嵌套的函数
@@ -65,31 +65,31 @@ tag: js
 一个函数可以被嵌套在另一个函数里面，形成一个词法环境的链条，我们也可以称之为作用域链。
 
 {% highlight javascript linenos%}
-    var a = 1
-    function f() {
-      function g() {
-        alert(a)
-      }
-      return g 
-    }     
-    var func = f()
-    func() // 1
+var a = 1
+function f() {
+  function g() {
+    alert(a)
+  }
+  return g 
+}     
+var func = f()
+func() // 1
 
 {% endhighlight %}
 
 词法环境对象形成由内而外形成作用域链:
 
 {% highlight javascript linenos%}
-    // LexicalEnvironment = window = {a:1, f: function}
-    var a = 1
-    function f() {
-      // LexicalEnvironment = {g:function}
-      function g() {
-        // LexicalEnvironment = {}
-        alert(a)
-      }     
-      return g 
-    }
+// LexicalEnvironment = window = {a:1, f: function}
+var a = 1
+function f() {
+  // LexicalEnvironment = {g:function}
+  function g() {
+    // LexicalEnvironment = {}
+    alert(a)
+  }     
+  return g 
+}
 
 {% endhighlight %}
 
@@ -100,12 +100,12 @@ tag: js
 嵌套函数可能继续在内存中存货，在外层函数已经运行结束之后:
 
 {% highlight javascript linenos%}
-    function User(name) {   
-      this.say = function(phrase) { 
-        alert(name + ' says: ' + phrase)
-      }
-    }
-    var user = new User('John')
+function User(name) {   
+  this.say = function(phrase) { 
+    alert(name + ' says: ' + phrase)
+  }
+}
+var user = new User('John')
 {% endhighlight %}
 
 标出词法环境：
@@ -135,19 +135,19 @@ tag: js
 在下面这个例子，`this.fixName`改变在`this.say`里被使用的`name`:
 
 {% highlight javascript linenos%}
-    function User(name) {         
-      this.fixName = function() {
-        name = 'Mr.' + name.toUpperCase()
-      }
-      this.say = function(phrase) { 
-        alert(name + ' says: ' + phrase)
-      }
-    }
-    var user = new User('John')
-    // (1)
-    user.fixName()
-    // (2)
-    user.say("I'm alive!") // Mr.JOHN says: I'm alive!
+function User(name) {         
+  this.fixName = function() {
+    name = 'Mr.' + name.toUpperCase()
+  }
+  this.say = function(phrase) { 
+    alert(name + ' says: ' + phrase)
+  }
+}
+var user = new User('John')
+// (1)
+user.fixName()
+// (2)
+user.say("I'm alive!") // Mr.JOHN says: I'm alive!
 
 {% endhighlight linenos%}
 
@@ -164,22 +164,22 @@ tag: js
 下面的例子里包含了有趣的小伎俩，通过一个例子来示范一下。
 
 {% highlight javascript linenos%}
-    function makeArmy() {
-      var shooters = []     
-      for(var i=0; i<10; i++) {
-        var shooter = function() { // a shooter is a function
-          alert(i) // which should alert it's number
-        }
-        shooters.push(shooter)   
-      }
-      return shooters
+function makeArmy() {
+  var shooters = []     
+  for(var i=0; i<10; i++) {
+    var shooter = function() { // a shooter is a function
+      alert(i) // which should alert it's number
     }
-    var army = makeArmy()     
-    var shooter = army[0] // first shooter
-    shooter() // alerts 10, should be 0
-    shooter = army[5] // 5th shooter
-    shooter() // alerts 10, should be 5
-    // all shooters alert same: 10 instead of 1,2,3...10.
+    shooters.push(shooter)   
+  }
+  return shooters
+}
+var army = makeArmy()     
+var shooter = army[0] // first shooter
+shooter() // alerts 10, should be 0
+shooter = army[5] // 5th shooter
+shooter() // alerts 10, should be 5
+// all shooters alert same: 10 instead of 1,2,3...10.
 {% endhighlight %}
 
 为什么每个shooter弹出的数字都是一样的呢？怎样才能让每个shooter都弹出他们相应的数字
@@ -199,50 +199,50 @@ tag: js
 第一种就是在`shooter`函数内部放一个正确的值。
 
 {% highlight javascript linenos%}
-    function makeArmy() {     
-      var shooters = []
-      for(var i=0; i<10; i++) {
-        var shooter = function() {
-          alert( arguments.callee.i )
-        }
-        shooter.i = i
-        shooters.push(shooter)   
-      }
-      return shooters
+function makeArmy() {     
+  var shooters = []
+  for(var i=0; i<10; i++) {
+    var shooter = function() {
+      alert( arguments.callee.i )
     }
-    var army = makeArmy()
-    army[0]() // 0
-    army[1]() // 1
+    shooter.i = i
+    shooters.push(shooter)   
+  }
+  return shooters
+}
+var army = makeArmy()
+army[0]() // 0
+army[1]() // 1
 {% endhighlight %}
 
 另一种更好的解决方案是用一个额外的函数去留住当前的`i`值。
 
 {% highlight javascript linenos%}
-    function makeArmy() {     
-      var shooters = []     
-      for(var i=0; i<10; i++) {     
-        var shooter = function(i) {     
-          return function() {
-            alert( i )
-          }
-        }(i)     
-        shooters.push(shooter)   
-      }     
-      return shooters
-    }     
-    var army = makeArmy()
-    army[0]() // 0
-    army[1]() // 1
+function makeArmy() {     
+  var shooters = []     
+  for(var i=0; i<10; i++) {     
+    var shooter = function(i) {     
+      return function() {
+        alert( i )
+      }
+    }(i)     
+    shooters.push(shooter)   
+  }     
+  return shooters
+}     
+var army = makeArmy()
+army[0]() // 0
+army[1]() // 1
 {% endhighlight %}
 
 让我们仔细看下面这段代码：
 
 {% highlight javascript linenos%}
-    var shooter = function(i) {
-      return function() {
-        alert( i )
-      }
-    }(i)
+var shooter = function(i) {
+  return function() {
+    alert( i )
+  }
+}(i)
 {% endhighlight %}
 
 这里实际的shooting函数是用一个创建和执行在同一个地方的匿名函数`function(i)`的结果来创建的。
@@ -254,19 +254,19 @@ tag: js
 最后一种方法是用一个临时函数包住整个循环。有时候这样做可读性更高。
 
 {% highlight javascript linenos%}
-    function makeArmy() {     
-      var shooters = []     
-      for(var i=0; i<10; i++) (function(i) {     
-        var shooter = function() {
-          alert( i )
-        }         
-        shooters.push(shooter)        
-      })(i)
-      return shooters
-    }
-    var army = makeArmy()
-    army[0]() // 0
-    army[1]() // 1
+function makeArmy() {     
+  var shooters = []     
+  for(var i=0; i<10; i++) (function(i) {     
+    var shooter = function() {
+      alert( i )
+    }         
+    shooters.push(shooter)        
+  })(i)
+  return shooters
+}
+var army = makeArmy()
+army[0]() // 0
+army[1]() // 1
 
 {% endhighlight %}
 
@@ -277,31 +277,31 @@ tag: js
 下面这个例子示范了一个用`new Function`创建的函数是怎么样忽略内部变量去找全局变量的。
 
 {% highlight javascript linenos%}
-    window.a = 1;
-    function getFunc() {
-      var a = 2;
-     
-      var func = function() { alert(a) }
-    
-      return func; 
-    }
-   
-    getFunc()() // 2, from LexicalEnvironemnt of getFunc
+window.a = 1;
+function getFunc() {
+  var a = 2;
+ 
+  var func = function() { alert(a) }
+
+  return func; 
+}
+
+getFunc()() // 2, from LexicalEnvironemnt of getFunc
 
 {% endhighlight %}
 
 现在用 `new Function`的方式创建函数
 
 {% highlight javascript linenos%}
-    window.a = 1
-    function getFunc() {
-      var a = 2
-     
-      var func = new Function('', 'alert(a)')  
-      return func
-    }
-    
-    getFunc()() // 1, from window
+window.a = 1
+function getFunc() {
+  var a = 2
+ 
+  var func = new Function('', 'alert(a)')  
+  return func
+}
+
+getFunc()() // 1, from window
 {% endhighlight %}
 
 ####总结
