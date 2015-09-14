@@ -8,7 +8,7 @@ tag: web
 
 1、直接安装 jekyll
 
-{% highlight html linenos%}
+{% highlight bash linenos%}
 $ gem install jekyll
 ~ $ jekyll new username.github.io
 ~ $ cd username.github.io
@@ -20,7 +20,7 @@ $ gem install jekyll
 
 这时候你代码仓库里的结构如下：
 
-{% highlight html linenos%}
+{% highlight bash linenos%}
 _inclides
 	footer.html
 	head.html
