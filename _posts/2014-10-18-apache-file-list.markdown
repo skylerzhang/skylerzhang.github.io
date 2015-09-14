@@ -18,32 +18,29 @@ tag: apache
 
 2、 文件里又这么一段
 
-{% highlight html linenos%}
-<Directory "/Library/WebServer/Documents">
+    <Directory "/Library/WebServer/Documents">
+        
+        Options FollowSymLinks 
+        
+        MultiviewsMatch Any
+       
+        AllowOverride None
     
-    Options FollowSymLinks 
-    
-    MultiviewsMatch Any
-   
-    AllowOverride None
-
-    Require all granted
-</Directory>
-{% endhighlight %}
+        Require all granted
+    </Directory>
 
 3、修改成
-{% highlight xml linenos%}
-<Directory "/Library/WebServer/Documents">
-    
-    Options Indexes FollowSymLinks
-    
-    MultiviewsMatch Any
-   
-    AllowOverride None
 
-    Require all granted
-</Directory>
-{% endhighlight %}
+    <Directory "/Library/WebServer/Documents">
+        
+        Options Indexes FollowSymLinks
+        
+        MultiviewsMatch Any
+       
+        AllowOverride None
+    
+        Require all granted
+    </Directory>
 
 4、重启Apache即可   `Apachectl restart `
 

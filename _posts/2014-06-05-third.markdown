@@ -8,11 +8,9 @@ tag: web
 
 1、直接安装 jekyll
 
-{% highlight bash linenos%}
-$ gem install jekyll
-~ $ jekyll new username.github.io
-~ $ cd username.github.io
-{% endhighlight %}
+	~ $ gem install jekyll
+	~ $ jekyll new username.github.io
+	~ $ cd username.github.io
 
 注意：这里重新创建代码仓库要重新创建那个绑定域名的`CNAME`文件，当然你也可以把jekyll模板放在一个新的目录下然后将里面的所有文件复制原来的 `username.github.io`也可以。
 
@@ -20,25 +18,23 @@ $ gem install jekyll
 
 这时候你代码仓库里的结构如下：
 
-{% highlight bash linenos%}
-_inclides
-	footer.html
-	head.html
-	header.html
-_layouts
-	default.html
-	page.html
-	post.html
-_posts
-	2014-6-5-welcome-to-jekyll.markdown
-css
-	main.css
-_config.yml
-about.md
-CNAME
-feed.xml
-index.html
-{% endhighlight %}
+	_inclides
+	    footer.html
+	    head.html
+	    header.html
+	_layouts
+	    default.html
+	    page.html
+	    post.html
+	_posts
+	    2014-6-5-welcome-to-jekyll.markdown
+	css
+	    main.css
+	_config.yml
+	about.md
+	CNAME
+	feed.xml
+	index.html
 
 `_config.yml`是主配置文件你可以修改你博客的名称、关键词、简介、用户名等等。
 

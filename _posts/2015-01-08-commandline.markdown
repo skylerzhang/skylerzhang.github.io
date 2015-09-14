@@ -41,18 +41,14 @@ node.js 中一个经常被忽视的功能就是它可以用来创建命令行工
 开始编写前唯一的依赖就是node.js。你可以在命令行里运行 `which node`来查看它是否已经安装。如果你已经安装了你可能会得到一个类似下面这样的返回。如果返回是空
 那么你可能没有安装node，你可以从[node.org](www.nodejs.org)下载安装包。
 
-{% highlight html %}
- $ which node
- /usr/local/bin/node
-{% endhighlight %}
+     $ which node
+     /usr/local/bin/node
 
 首先，创建一个名叫`gitsearch.js`的文件并且在第一行加一个[shebang](http://en.wikipedia.org/wiki/Shebang_(Unix));这样就能告诉系统用什么解释器
 来使用和运行我们的文件。在我们的项目中我们希望用node的解释器来运行文件。(在[stackoverlow](http://unix.stackexchange.com/questions/29608/why-is-it-better-to-use-usr-bin-env-name-instead-of-path-to-name-as-my)上
 有一个讨论是关于为什么要用`/usr/bin/env node`来代替`/usr/local/bin/node`的)。
 
-{% highlight html %}
- #!/usr/bin/env node
-{% endhighlight %}
+     #!/usr/bin/env node
 
 你的脚本要可是执行的（所它可以通过载入程序来运行）。为了让脚本可执行，运行 `chmod +x gitsearch.js`，可以改变脚本的访问权限，这样加载程序就可以运行它了。
 
@@ -60,9 +56,7 @@ node.js 中一个经常被忽视的功能就是它可以用来创建命令行工
 
 创建命令最简单的方式就是通过调用路径和文件名来运行你的脚本。
 
-{% highlight html linenos%}
- ./gitsearch.js
-{% endhighlight %}
+     ./gitsearch.js
 
 创建命令行工具最关键就是确保在你的系统里没有其他命令和你用了同样的名字。你可以用`which commandName`来查询命令是否已经存在。在这个例子我们用的命令叫
 `gitsearch`, 如果运行`which gitsearch`返回的是空，那么说明这个命令没有被使用。因为这是一个NodeJs脚本，所以我们将用[npm](https://www.npmjs.org/)来安装这个脚本
@@ -91,10 +85,8 @@ node.js 中一个经常被忽视的功能就是它可以用来创建命令行工
 最重要的部分是这里`"bin": {"gitsearch": "gitsearch.js"}`,他将`gitsearch`命令关联到了`gitsearch.js`文件。在命令行里进入到相应的文件夹
 通过npm来全局安装你的脚本。
 
-{% highlight html linenos%}
- cd ./path/to/directory/
- sudo npm install -g
-{% endhighlight %}
+     cd ./path/to/directory/
+     sudo npm install -g
 
 这样做有个缺点就是每次你更改`gitsearch.js`文件后你都需要重新运行下`npm install -g`命令来查看全局映射的改变。
 
@@ -105,10 +97,8 @@ node.js 中一个经常被忽视的功能就是它可以用来创建命令行工
 但进行输入和输出工作时，命令行工具是十分有用的。参数和选项可以通过`process.argv`文件传进命令行。添加`console.log(process.argv);`到你的脚本并且带着参数运行你的命令
 你将会的得到如下的输出：
 
-{% highlight html linenos%}
- gitsearch -g
- [ 'node', '/path/to/script/gitsearch.js', '-g' ]
-{% endhighlight %}
+     gitsearch -g
+     [ 'node', '/path/to/script/gitsearch.js', '-g' ]
 
 Node最有价值的方面就是它的开发者社区和他们所贡献的包。这些包往往都是轻量级的,被用来做一些特定的工作。一个伟大的例子
 就是[Commander](https://github.com/visionmedia/commander.js/)，一个被设计用来构建命令行接口并且提供处理参数和选项的方法。
