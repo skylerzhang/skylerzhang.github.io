@@ -34,7 +34,7 @@ function debounce(func, wait, immediate) {
 		clearTimeout(timeout);
 		timeout = setTimeout(later, wait);
 		if (callNow) func.apply(context, args);
-	};
+    };
 };
 
 // Usage
