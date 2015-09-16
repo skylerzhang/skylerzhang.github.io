@@ -71,4 +71,30 @@ var g = function(arg) { alert('g:'+arg) } // <-- var
 
 第三，代码开始运行，当一个变量或者函数被调用，解释器会从`window`对象里获取他们。
 
-    
+{% highlight javascript linenos%}
+alert("a" in window) // true, because window.a exists
+alert(a) // undefined, because assignment happens below
+alert(f) // function, because it is Function Declaration
+alert(g) // undefined, because assignment happens below
+var a = 5 
+function f() { /*...*/ }
+var g = function() { /*...*/ }
+{% endhighlight %}  
+
+第四，赋值之后，`a`变成了`5`，`g`变成了一个函数。在下面的代码中，`alerts`被放到了下面。注意他们的不同：
+
+{% highlight javascript linenos%}
+var a = 5 
+var g = function() { /*...*/ }
+alert(a) // 5
+alert(g) // function
+{% endhighlight %}
+
+如果一个变量没有用`var`声明，它就不会被初始化。解释器找不到它。
+
+{% highlight javascript linenos%}
+alert("b" in window) // false, there is no window.b
+alert(b) // error, b is not defined
+b = 5
+{% endhighlight %}
+
