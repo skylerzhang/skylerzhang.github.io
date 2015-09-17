@@ -98,3 +98,83 @@ alert(b) // error, b is not defined
 b = 5
 {% endhighlight %}
 
+###函数变量
+
+在每个函数被调用和运行的时候，都会有一个新的`词法环境对象`被创建,里面包含参数、变量和嵌套函数。
+
+这个对象用于对内部变量的读写。不像`window`对象，一个函数的`词法环境对象`没有直接的入口可以获得它。
+
+让我们看一下下面函数的具体执行过程：
+
+{% highlight javascript linenos%}
+function sayHi(name) {
+  var phrase = "Hi, " + name
+  alert(phrase)
+}
+sayHi('John')
+{% endhighlight %}
+
+1、当解释器准备运行函数的时候，是从函数第一行的前面开始运行，一个空的`词法环境对象`被创建，里面包含了参数、变量和内嵌函数。
+
+{% highlight javascript linenos%}
+function sayHi(name) {
+// LexicalEnvironment = { name: 'John', phrase: undefined }
+  var phrase = "Hi, " + name
+  alert(phrase)
+}
+sayHi('John')
+{% endhighlight %}
+
+参数有初始值，但是本地变量没有。
+
+2、然后函数开始运行，最终赋值被执行。一个变量最终被赋值意味着`词法环境对象`上相应的属性也被赋值。
+
+{% highlight javascript linenos%}
+function sayHi(name) {
+// LexicalEnvironment = { name: 'John', phrase: undefined }
+  var phrase = "Hi, " + name
+// LexicalEnvironment = { name: 'John', phrase: 'Hi, John'}
+  alert(phrase)
+}
+sayHi('John')
+{% endhighlight %}
+
+最后一行`alert(phrase)`从`词法环境对象`里查找`phrase`属性并输出它的值。
+
+3、在执行结束后，在通常情况下`词法环境对象`连同它内部的内容会一并被js的垃圾回收机制回收，因为这些变量都已经不再需要了。但是如你所见事实上也有例外的时候。
+
+    如果我们看了ECMA-262 的说明，实际上是有两个不同的对象。
+    
+    第一个是`VariableEnvironment`对象，包含着变量和函数，由`FunctionDeclaration`声明，声明之后就不可再变了。
+    
+    第一个是`LexicalEnvironment`对象，几乎和`VariableEnvironment`一样，但是这个对象才是在函数执行过程中用到过的对象。
+    
+    你可以在[ECMA-262](http://www.ecma-international.org/publications/standards/Ecma-262.htm)的标准中找到更详细的描述。
+    
+###没有块级作用域
+
+下面两段代码是没有区别的：
+
+{% highlight javascript linenos%}
+var i = 1
+{
+  i = 5
+}
+{% endhighlight %}
+
+{% highlight javascript linenos%}
+i = 1
+{
+  var i = 5
+}
+{% endhighlight %}
+
+在这两个案例中，所有的`var`声明都是发生在这块代码执行之前。
+
+不像JAVA、C 等其他语言，在JavaScript的循环中变量会被留存的。
+
+{% highlight javascript linenos%}
+for(var i=0; i<5; i++) { }
+alert(i) // 5, variable survives and keeps value
+}
+{% endhighlight %}
