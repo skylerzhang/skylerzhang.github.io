@@ -1,0 +1,530 @@
+---
+layout: post
+title:  "es6的新特性"
+date:   2015-11-18
+categories: es6
+tag: es6
+---
+
+本文翻译自[ECMAScript 6 (ES6): What’s New In The Next Version Of JavaScript](http://www.smashingmagazine.com/2015/10/es6-whats-new-next-version-javascript/)
+
+大家都听说过`ECMAScript6`.它是下一个版本的`javascript`.新增了一些伟大的特性.这些特性的复杂度不一,即可以用在简单的脚本上,也可以用在复杂的应用中.
+这篇文章,我们将讨论一些我精心挑选的ES6特性,这些特性都是你在平时敲代码时候用的到的.
+
+虽然对es6的支持还不全面,但是高版本的浏览器已经开始着手部署支持es6.如果你要在老版本浏览器上应用es6特性,我会提供一个解决方案可以帮助你在马上使用.
+
+###变量
+
+####LET
+
+我们过去常常用`var`声明变量.现在你也可以用`let`来声明.他们的差别是作用域.用`var`声明的作用于是它外层的函数,而`let`声明的变量它是具有块级作用域的.
+
+{% highlight javascript linenos%}
+if(true) {
+   let x = 1;
+}
+console.log(x); // undefined
+{% endhighlight %}
+
+这样可以使函数看上去更整洁,从而减少闲置变量,下面是一个传统的数组遍历
+
+{% highlight javascript linenos%}
+for(let i = 0, l = list.length; i < l; i++) {
+   // do something with list[i]
+}
+console.log(i); // undefined
+{% endhighlight %}
+
+通常情况下,如果在同一个作用于下再写一个遍历那就得重新定义一个变量`j`.但是如果用`let`你可以安全的直接再次声明`i`.
+
+####CONST
+
+还有另一种方式去声明块级作用域变量.用`const`你可以对一个值声明一个只读的引用.你声明的时候必须直接赋值,如果你试图改变它的值或者声明的时候没有直接
+赋值,程序会报错.
+
+{% highlight javascript linenos%}
+const MY_CONSTANT = 1;
+MY_CONSTANT = 2 // Error
+const SOME_CONST; // Error
+{% endhighlight %}
+
+但是你仍然可以修改对象属性和数组成员
+
+{% highlight javascript linenos%}
+const MY_OBJECT = {some: 1};
+MY_OBJECT.some = 'body'; // Cool
+{% endhighlight %}
+
+###箭头函数
+
+剪头函数是对JavaScript语言伟大的补充.它使代码变得更加简介.我们在这篇文章里这么早的就介绍剪头函数,是因为后面我们要用到它.
+
+{% highlight javascript linenos%}
+let books = [{title: 'X', price: 10}, {title: 'Y', price: 15}];
+
+let titles = books.map( item => item.title );
+
+// ES5 equivalent:
+var titles = books.map(function(item) {
+   return item.title;
+});
+{% endhighlight %}
+
+如果我们看箭头函数的语法,你就会发现没有`function`关键字.由零个或者多个参数,`=>`和一个函数表达式组成.`return`是隐式添加的.
+
+{% highlight javascript linenos%}
+// No arguments
+books.map( () => 1 ); // [1, 1]
+
+// Multiple arguments
+[1,2].map( (n, index) => n * index ); // [0, 2]
+{% endhighlight %}
+
+如果你需要更多的地方可以放一个函数表达式在`{ ... }`里:
+
+{% highlight javascript linenos%}
+let result = [1, 2, 3, 4, 5].map( n => {
+   n = n % 3;
+   return n;
+});
+{% endhighlight %}
+
+与传统的标准函数相比,箭头函数不仅仅能够节省字符.一个剪头函数可以从它所在的上下文中继承`this`和`arguments`.这就意味着你可以摆脱像`var that=this`
+这种令人恶心的声明.并且你不用绑定绑定函数到正确的环境中.
+
+{% highlight javascript linenos%}
+let book = {
+   title: 'X',
+   sellers: ['A', 'B'],
+   printSellers() {
+      this.sellers.forEach(seller => console.log(seller + ' sells ' + this.title));
+   }
+}
+
+// ES5 equivalent:
+var book = {
+   title: 'X',
+   sellers: ['A', 'B'],
+   printSellers: function() {
+      var that = this;
+      this.sellers.forEach(function(seller) {
+         console.log(seller + ' sells ' + that.title)
+      })
+   }
+}
+{% endhighlight %}
+
+###字符串
+
+####方法
+
+`String`的原型上加了一些很方便的方法.他们用的很多其实都是`indexOf()`的变通:
+
+{% highlight javascript linenos%}
+'my string'.startsWith('my'); //true
+'my string'.endsWith('my'); // false
+'my string'.includes('str'); // true
+{% endhighlight %}
+
+这些方法简单但是实用.另一个有用的方法是创建重复字符串:
+
+{% highlight javascript linenos%}
+'my '.repeat(3); // 'my my my '
+{% endhighlight %}
+
+####模板字面量
+
+模板字面量提供了一个清晰的方法来创建字符串和拼接字符串.你可能已经很熟悉这种语法了;它由美元符和花括号构成`${..}`.模板字面量必须包含在``中.
+
+{% highlight javascript linenos%}
+let name = 'John',
+   apples = 5,
+   pears = 7,
+   bananas = function() { return 3; }
+
+console.log(`This is ${name}.`);
+
+console.log(`He carries ${apples} apples, ${pears} pears, and ${bananas()} bananas.`);
+
+// ES5 equivalent:
+console.log('He carries ' + apples + ' apples, ' + pears + ' pears, and ' + bananas() +' bananas.');
+{% endhighlight %}
+
+在上面的例子中,和es5相比,模板字面量只不过是方便了字符串拼接而已.然而,模板字面量还可以被用于多行字符串.
+
+{% highlight javascript linenos%}
+let x = `1...
+2...
+3 lines long!`; // Yay
+
+// ES5 equivalents:
+var x = "1...\n" + 
+"2...\n" +
+"3 lines long!";
+
+var x = "1...\n2...\n3 lines long!";
+{% endhighlight %}
+
+###数组
+
+数组对象有了一些静态类方法,在`Array`的原型上.
+
+首先,`Array.from`可以从类数组和可遍历对象创建`Array`实例.类数组对象包括:
+
+* 函数里的`arguments`
+* `document.getElementByTagName()`方法返回的`nodelist`对象
+* 新加 `Map`和`Set`数据结构
+
+{% highlight javascript linenos%}
+let itemElements = document.querySelectorAll('.items');
+let items = Array.from(itemElements);
+items.forEach(function(element) {
+    console.log(element.nodeType)
+});
+
+// A workaround often used in ES5:
+let items = Array.prototype.slice.call(itemElements);
+{% endhighlight %}
+
+在上面的例子中你可以看到`item`数组有`forEach`方法,这个放在在`itemElement`里是没有的.
+
+`array.from`一个比较有趣的特性是它的第二个参数`mapFunction`参数.这个方法使你可以用一行代码从map结构中获得数组.
+
+{% highlight javascript linenos%}
+let navElements = document.querySelectorAll('nav li');
+let navTitles = Array.from(navElements, el => el.textContent);
+{% endhighlight %}
+
+然后,我们还有`Array.of`方法,这个方法很像我们非常喜欢的`Array`构造函数,它修复了一种特殊情况,就是当我们传一个单独数字到构造函数的时候不能生成一个由一个元素构成的数组.
+这种情况下`Array.of`要比构造函数`new Array`更合适.然而,在大部分情况下你都是用数组字面量来声明数组.
+
+{% highlight javascript linenos%}
+let x = new Array(3); // [undefined, undefined, undefined]
+let y = Array.of(8); // [8]
+let z = [1, 2, 3]; // Array literal
+{% endhighlight %}
+
+还有一些方法已经被加到了`Array`的原型上了.我认为`find`方法应该是最受js开发人员喜爱的方法.
+
+* `find`返回第一个回调为`true`的元素
+* `findIndex`返回第一个回调为`true`的元素的索引
+* `fill`用给出的参数"覆盖"数组的元素
+
+{% highlight javascript linenos%}
+[5, 1, 10, 8].find(n => n === 10) // 10
+
+[5, 1, 10, 8].findIndex(n => n === 10) // 2
+
+[0, 0, 0].fill(7) // [7, 7, 7]
+[0, 0, 0, 0, 0].fill(7, 1, 3) // [0, 7, 7, 7, 0]
+{% endhighlight %}
+
+###Math对象
+
+一组新方法也被添加到了`Math`对象上.
+
+* `Math.sign`返回一个数是正是负
+* `Math.trunc`返回小数点以前的数
+* `Math.cbrt`返回一个数的立方根
+
+{% highlight javascript linenos%}
+Math.sign(5); // 1
+Math.sign(-9); // -1
+
+Math.trunc(5.9); // 5
+Math.trunc(5.123); // 5
+Math.trunc(-5.123); // -5
+Math.floor(-5.123); // -6,通过对比可以看出Math.floor 和 Math.trunc的区别
+
+Math.cbrt(64); // 4
+{% endhighlight %}
+
+###扩展运算符
+
+在特定的位置扩展数组元素,扩展运算符(`...`)是一种非常方便的语法,像在函数调用时候的参数.
+
+首先让我们来看看怎样用另一个数组来扩展数组元素:
+
+{% highlight javascript linenos%}
+let values = [1, 2, 4];
+let some = [...values, 8]; // [1, 2, 4, 8]
+let more = [...values, 8, ...values]; // [1, 2, 4, 8, 1, 2, 4]
+
+// ES5 equivalent:
+var values = [1, 2, 4];
+var some = [].concat(values, [8]);
+var more = [].concat(values, [8], values);
+// Iterate, push, sweat, repeat...
+// Iterate, push, sweat, repeat...
+{% endhighlight %}
+
+扩展语法在调用函数的时候也非常有用
+
+{% highlight javascript linenos%}
+let values = [1, 2, 4];
+
+doSomething(...values);
+
+function doSomething(x, y, z) {
+   // x = 1, y = 2, z = 4
+}
+
+// ES5 equivalent:
+doSomething.apply(null, values);
+{% endhighlight %}
+
+可以看出,扩展运算符把我们从`fn.apply()`中解救了出来.这个语法的变通性很强,因为扩展运算符可以被用在参数数组的任何地方.这意味着下面这样写也可以
+
+{% highlight javascript linenos%}
+let values = [2, 4];
+doSomething(1, ...values);
+{% endhighlight %}
+
+我们已经把扩展运算符用在了数组和函数参数上.实际上它可以用在一切可遍历的对象上,像`NodeList`:
+
+{% highlight javascript linenos%}
+let form = document.querySelector('#my-form'),
+   inputs = form.querySelectorAll('input'),
+   selects = form.querySelectorAll('select');
+
+let allTheThings = [form, ...inputs, ...selects];
+{% endhighlight %}
+
+###解构
+
+结构提供了一中便利的方法从对象和数组中取出数据.首先一个很好的例子就是用在数组上:
+
+{% highlight javascript linenos%}
+let [x, y] = [1, 2]; // x = 1, y = 2
+
+// ES5 equivalent:
+var arr = [1, 2];
+var x = arr[0];
+var y = arr[1];
+{% endhighlight %}
+
+有了这个语法,多个变量可以只用一行代码就能赋值.你可以很方便的交换两个变量的值
+
+{% highlight javascript linenos%}
+let x = 1,
+   y = 2;
+
+[x, y] = [y, x]; // x = 2, y = 1
+{% endhighlight %}
+
+解构也可以用在对象上.要确保每个键都有对应:
+
+{% highlight javascript linenos%}
+let obj = {x: 1, y: 2};
+let {x, y} = obj; // x = 1, y = 2
+{% endhighlight %}
+
+你也可以用它来改变变量名:
+
+{% highlight javascript linenos%}
+let obj = {x: 1, y: 2};
+let {x: a, y: b} = obj; // a = 1, b = 2
+{% endhighlight %}
+
+另一个很有意思的方法是假装有多个返回值
+
+{% highlight javascript linenos%}
+function doSomething() {
+   return [1, 2]
+}
+
+let [x, y] = doSomething(); // x = 1, y = 2
+{% endhighlight %}
+
+解构还可以用于给参数对象分配默认值.用对象字面量你可以,你可以确实可以假装给形参命名赋值了.
+
+{% highlight javascript linenos%}
+function doSomething({y = 1, z = 0}) {
+   console.log(y, z);
+}
+doSomething({y: 2});
+{% endhighlight %}
+
+###形参
+
+####默认值
+
+在es6里可以给函数的形参设置默认值.语法如下
+
+{% highlight javascript linenos%}
+function doSomething(x, y = 2) {
+   return x * y;
+}
+
+doSomething(5); // 10
+doSomething(5, undefined); // 10
+doSomething(5, 3); // 15
+{% endhighlight %}
+
+如果是es5你可能得想下面这样写一坨
+
+{% highlight javascript linenos%}
+function doSomething(x, y) {
+   y = y === undefined ? 2 : y;
+   return x * y;
+}
+{% endhighlight %}
+
+####rest参数
+
+我们已经说过扩展运算符,这个和扩展运算符很像,它也用`...`语法并且允许你储存参数到一个数组
+
+{% highlight javascript linenos%}
+function doSomething(x, ...remaining) {
+   return x * remaining.length;
+}
+
+doSomething(5, 0, 0, 0); // 15
+{% endhighlight %}
+
+###模块
+
+JS语言对于模块的扩展是很受欢迎的.我认为这事es6所有特性中唯一值得深挖的.
+
+今天许多正式的JavaScript项目都应用了一些模块系统——比如"revealing module pattern"再或者是应用更广泛的AMD和CommonJS规范.
+然而,浏览器是不支持模块系统的.你需要为你的AMD或者CommonJS建立一个模块加载器.类似的工具有RequireJS, Browserify , Webpack , Seajs.
+
+es6规范中包括新的模块语法和一个模块加载器.如果你想要使用模块化就必须按照es6规定的语法来.现代的打包工具支持这种格式,有时候需要插件支持.所以尽情的用吧,
+下面是对`export`和`import`关键词的一些使用:
+
+{% highlight javascript linenos%}
+// lib/math.js
+
+export function sum(x, y) {
+   return x + y;
+}
+export var pi = 3.141593;
+{% endhighlight %}
+
+{% highlight javascript linenos%}
+// app.js
+
+import { sum, pi } from "lib/math";
+console.log('2π = ' + sum(pi, pi));
+{% endhighlight %}
+
+你可以看到,一个文件里可以有多个`export`语句.每一个`export`输出类型必须是确定状态的值（在这个例子里是`function`和`var`）
+
+在这个例子中`import`声明用的语法（和解构类似）明确的定义了什么被导入.如果像全部导入模块里的方法和属性可以用`*`结合`as`来把导入的模块对象赋值到一个本地对象上.
+
+{% highlight javascript linenos%}
+// app.js
+
+import * as math from "lib/math";
+console.log('2π = ' + math.sum(math.pi, math.pi));
+{% endhighlight %}
+
+模块系统可以输出一个`default`默认属性.这个默认的值也可以是一个函数.导入这个默认值到一个模块中,你只需要提供了本地名称即可.
+
+{% highlight javascript linenos%}
+// lib/my-fn.js
+
+export default function() {
+   console.log('echo echo');
+}
+
+// app.js
+
+import doSomething from 'lib/my-fn';
+doSomething();
+{% endhighlight %}
+
+请记住那个`import`声明是同步的,但是代码不会被执行直到所有的依赖都加载完毕.
+
+###类
+
+类是es6里非常值得讨论的特性.一些人认为它违反了JavaScript原型的本质,另一些人认为它降低了初学者和其他语言开发真的入门门槛,并且能够帮助人们开发大型应用.
+
+类的创建是围绕着`class`和`constructor`等关键词的.这儿有一个小例子:
+
+{% highlight javascript linenos%}
+class Vehicle {
+   constructor(name) {
+      this.name = name;
+      this.kind = 'vehicle';
+   }
+   getName() {
+      return this.name;
+   }
+}
+
+// Create an instance
+let myVehicle = new Vehicle('rocky');
+{% endhighlight %}
+
+注意类定义的并不是一个标准对象;因此,类成员之间并不需要用逗号隔开.
+
+要创建一个类的实例,你必须用`new`关键词.要从基类继承要用到`extends`关键词:
+
+{% highlight javascript linenos%}
+class Car extends Vehicle {
+   constructor(name) {
+      super(name);
+      this.kind = 'car'
+   }
+}
+
+let myCar = new Car('bumpy');
+
+myCar.getName(); // 'bumpy'
+myCar instanceof Car; // true
+myCar instanceof Vehicle; //true
+{% endhighlight %}
+
+继承来自父类的属性和方法,你可以用`super()`关键字:
+
+* 用`super()`调用父类的构造函数
+* 调用成员方法`super.getName()`
+
+###Symbols
+
+Symbols是一中新的原始数据格式,和`Number`,`String`一样.你可以用symbols为属性创建唯一的标识或者创建常量.
+
+{% highlight javascript linenos%}
+const MY_CONSTANT = Symbol();
+
+let obj = {};
+obj[MY_CONSTANT] = 1;
+{% endhighlight %}
+
+注意,用symbols创建的键值对是不能通过`Object.getOwnPropertyNames()`获得的,也能不能被`for...in`遍历,Object.keys(),JSON.stringify()等都不能获得.
+这事symbols属性和普通键值对对打的区别.不过你可以通过`Object.getOwnPropertySymbols()`获得.
+
+Symbol和`const`类似,因为他们都不可变的:
+
+{% highlight javascript linenos%}
+const CHINESE = Symbol();
+const ENGLISH = Symbol();
+const SPANISH = Symbol();
+
+switch(language) {
+   case CHINESE:
+      //
+      break;
+   case ENGLISH:
+      //
+      break;
+   case SPANISH:
+      //
+      break;
+   default:
+      //
+      break;
+}
+{% endhighlight %}
+
+你可以给symbol一个描述.但是你不能通过它来获得symbol本身.这个描述主要用来debug.
+
+{% highlight javascript linenos%}
+const CONST_1 = Symbol('my symbol');
+const CONST_2 = Symbol('my symbol');
+
+typeof CONST_1 === 'symbol'; // true
+
+CONST_1 === CONST_2; // false
+{% endhighlight %}
