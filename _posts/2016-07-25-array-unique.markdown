@@ -2,7 +2,7 @@
 layout: post
 title:  "javascript数组去重"
 date:   2016-07-26
-categories: js es6
+categories: js
 tag: js es6 unique
 ------------------
 
