@@ -1,11 +1,46 @@
+.no-opacity {
+    opacity: 0
+}
+.loading {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background: black;
+    z-index: 1;
+}
+
+.loading-rotate-full {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -15px;
+    margin-top: -15px;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #777;
+    border-top-color: transparent;
+    border-radius: 50%;
+    -webkit-animation: rotate 1s linear infinite;
+    box-sizing: border-box;
+}
+@-webkit-keyframes rotate{
+    from{
+        -webkit-transform: rotate(0);
+    }
+    to{
+        -webkit-transform: rotate(360deg);
+    }
+}
+
 .slide-basic {
     position: relative;
     width: 100%;
     height: 100%;
 }
-
 .slide-one {
-    background-image: url("imgs/1/月天空.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/1/yue_tiankong.png");
     background-size: 100%;
     background-repeat: no-repeat;
 }
@@ -13,7 +48,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: url("imgs/1/楼房.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/1/loufang.png");
     background-size: 100%;
     background-repeat: no-repeat;
     z-index: 1;
@@ -24,21 +59,21 @@
     right: 30px;
     width: 95px;
     height: 265px;
-    background-image: url("imgs/1/人物1.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/1/renwu_1.png");
     background-size: 100%;
     background-repeat: no-repeat;
 }
 .slide-one-people2 {
-    background-image: url("imgs/1/人物2.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/1/renwu_2.png");
 }
 .slide-one-people3 {
-    background-image: url("imgs/1/人物3.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/1/renwu_3.png");
 }
 .slide-one-people4 {
-    background-image: url("imgs/1/人物2.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/1/renwu_2.png");
 }
 .slide-one-people5 {
-    background-image: url("imgs/1/人物3.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/1/renwu_3.png");
 }
 .slide-one-people6 {
     position: absolute;
@@ -46,24 +81,35 @@
     right: 156px;
     width: 121px;
     height: 165px;
-    background-image: url("imgs/1/人物6.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/1/renwu_6.png");
     background-size: 100%;
     background-repeat: no-repeat;
+    animation-duration: .8s;
+    -webkit-animation-duration: .8s;
 }
 .slide-one-people7 {
-    background-image: url("imgs/1/人物7.png");
+    position: absolute;
+    top: 372px;
+    right: 156px;
+    width: 121px;
+    height: 165px;
+    background-size: 100%;
+    background-repeat: no-repeat;
+    background-image: url("http://app.billionconnect.com/h5/imgs/1/renwu_7.png");
+    animation-duration: 1.2s;
+    -webkit-animation-duration: 1.2s;
 }
 .slide-one-footer {
     position: absolute;
     bottom: 0;
     width: 100%;
     height: 120px;
-    background-image: url("imgs/1/下地面.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/1/xia_dimian.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 .slide-two {
-    background-image: url("imgs/2/门光背景.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/menguang_beijing.png");
     background-size: auto 100%;
     background-repeat: repeat-x;
 }
@@ -71,7 +117,7 @@
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: url("imgs/2/页面2bg.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/yemian_2_bg.png");
     background-size:100%;
     background-repeat: no-repeat;
 }
@@ -80,18 +126,19 @@
     bottom: 0;
     width: 100%;
     height: 170px;
-    background-image: url("imgs/2/门光.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/menguang.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 .slide-two-people {
     transform: translate(-238px);
+    -webkit-transform: translate(-238px);
     position: absolute;
     bottom: 0;
     left: 0;
     width: 112px;
     height: 238px;
-    background-image: url("imgs/2/人物.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/renwu.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -101,7 +148,7 @@
     top: 130px;
     width: 115px;
     height: 65px;
-    background-image: url("imgs/2/开着的空调.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/kaizhede_kongtiao.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -113,7 +160,7 @@
     height: 65px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-image: url("imgs/2/关着的空调.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/guanzhede_kongtiao.png");
 }
 div.air-conditioner-tips {
     position: absolute;
@@ -121,10 +168,11 @@ div.air-conditioner-tips {
     top: 10px;
     width: 92px;
     height: 27px;
-    background-image: url("imgs/2/点击关闭空调.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/dianji_guanbi_kongtiao.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     animation-duration: 2.5s;
+    -webkit-animation-duration: 2.5s;
 }
 .projection {
     position: absolute;
@@ -132,9 +180,10 @@ div.air-conditioner-tips {
     top: 320px;
     width: 87px;
     height: 78px;
-    background-image: url("imgs/2/开着的投影.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/kaizhede_touying.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    z-index: 1;
 }
 .projection-close {
     position: absolute;
@@ -144,7 +193,7 @@ div.air-conditioner-tips {
     height: 78px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-image: url("imgs/2/关了的投影.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/guanlede_touying.png");
 }
 div.projection-tips {
     position: absolute;
@@ -152,10 +201,11 @@ div.projection-tips {
     left: -105px;
     width: 105px;
     height: 27px;
-    background-image: url("imgs/2/点击关闭投影仪.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/dianji_guanbi_touyingyi.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     animation-duration: 2.5s;
+    -webkit-animation-duration: 2.5s;
 }
 .computer {
     position: absolute;
@@ -163,9 +213,10 @@ div.projection-tips {
     top: 350px;
     width: 79px;
     height: 57px;
-    background-image: url("imgs/2/开着的笔记本3.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/kaizhede_bijiben3.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
+    z-index: 1;
 }
 .computer-close {
     position: absolute;
@@ -175,7 +226,7 @@ div.projection-tips {
     height: 57px;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-image: url("imgs/2/关着的笔记本.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/guanzhede_bijiben.png");
 }
 div.computer-tips {
     position: absolute;
@@ -183,10 +234,11 @@ div.computer-tips {
     left: -92px;
     width: 92px;
     height: 27px;
-    background-image: url("imgs/2/点击关闭电脑.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/dianji_guanbi_diannao.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
     animation-duration: 2.5s;
+    -webkit-animation-duration: 2.5s;
 }
 .mask {
     display: none;
@@ -197,13 +249,14 @@ div.computer-tips {
     height: 100%;
     background: rgba(0, 0, 0, .3);
 }
+.plug-bg-out,
 .plug-bg {
     position: absolute;
     top: 50%;
     margin-top: -110px;
     width: 100%;
     height: 221px;
-    background-image: url("imgs/2/开关背景.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/kaiguan_beijing.png");
     background-size: 100% auto;
     background-repeat: repeat-y;
 }
@@ -213,7 +266,7 @@ div.computer-tips {
     top: 0;
     width: 100%;
     height: 100%;
-    background-image: url("imgs/2/拔掉插头.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/ba_diao_chatou.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -225,32 +278,48 @@ div.computer-tips {
     height: 100%;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    background-image: url("imgs/2/拔掉插头2.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/ba_diao_chatou2.png");
 }
 .switch-bg {
     position: absolute;
     bottom: 0;
     transform: translate(0, 221px);
+    -webkit-transform: translate(0, 221px);
     width: 100%;
     height: 221px;
-    background-image: url("imgs/2/开关背景.png");
-    background-size: auto 100%;
-    background-repeat: repeat-x;
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/kaiguan_beijing.png");
+    background-size: 100% auto;
+    background-repeat: repeat-y;
 }
 .switch-bg-close {
-    background-image: url("imgs/2/请关灯2背景.png");
+    position: absolute;
+    width: 100%;
+    height: 221px;
+    background-size: 100% auto;
+    background-repeat: repeat-y;
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/qing_guandeng2_beijing.png");
 }
 
 .switch {
+    position: absolute;
+    left: 0;
+    top: 0;
     width: 100%;
     height: 100%;
-    background-image: url("imgs/2/开关.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/kaiguan.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 
 .switch-close {
-    background-image: url("imgs/2/请关灯2.png");
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-size: 100% 100%;
+    background-repeat: no-repeat;
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/qing_guandeng2.png");
 }
 
 .room-night {
@@ -259,7 +328,7 @@ div.computer-tips {
     left: 0;
     width: 100%;
     height: 100%;
-    background-image: url("imgs/2/页面2关灯后.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/yemian_2_guandenghou.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -270,7 +339,7 @@ div.computer-tips {
     top: 210px;
     width: 200px;
     height: 134px;
-    background-image: url("imgs/2/投影屏幕3.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/2/touying_pingmu3.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -283,7 +352,7 @@ div.computer-tips {
     bottom: 0;
     width: 100%;
     height: 100%;
-    background-image: url("imgs/4/地板.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/diban.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -291,7 +360,7 @@ div.computer-tips {
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: url("imgs/4/地板拼接条.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/diban_pinjietiao.png");
     background-size: auto 100%;
     background-repeat: repeat-x;
 }
@@ -299,7 +368,7 @@ div.computer-tips {
     position: absolute;
     width: 100%;
     height: 100%;
-    background-image: url("imgs/4/天花板.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/tianhuaban.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -311,10 +380,10 @@ div.computer-tips {
     background-repeat: no-repeat;
 }
 .light1 {
-    background-image: url("imgs/4/灯1.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/deng1.png");
 }
 .light2 {
-    background-image: url("imgs/4/灯2.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/deng2.png");
 }
 .lamp {
     position: absolute;
@@ -326,10 +395,10 @@ div.computer-tips {
     background-repeat: no-repeat;
 }
 .lamp1 {
-    background-image: url("imgs/4/掉灯1.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/diaodeng1.png");
 }
 .lamp2 {
-    background-image: url("imgs/4/掉灯2.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/diaodeng2.png");
 }
 .door {
     position: absolute;
@@ -341,22 +410,23 @@ div.computer-tips {
     background-repeat: no-repeat;
 }
 .door1 {
-    background-image: url("imgs/4/门1.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/meng_1.png");
 }
 .door2 {
-    background-image: url("imgs/4/门2.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/meng_2.png");
 }
 .door3 {
-    background-image: url("imgs/4/门3.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/meng_3.png");
 }
 .slide-three-people1 {
     position: absolute;
     right: 20px;
     bottom: 0;
     transform: translate(0, 182px);
+    -webkit-transform: translate(0, 182px);
     width: 78px;
     height: 182px;
-    background-image: url("imgs/4/人物1.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/renwu_1.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -366,7 +436,7 @@ div.computer-tips {
     bottom: 140px;
     width: 58px;
     height: 222px;
-    background-image: url("imgs/4/人物2.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/renwu_2.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -376,7 +446,7 @@ div.computer-tips {
     top: 160px;
     width: 42px;
     height: 157px;
-    background-image: url("imgs/4/人物3.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/renwu_3.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -386,7 +456,7 @@ div.computer-tips {
     top: 90px;
     width: 25px;
     height: 107px;
-    background-image: url("imgs/4/人物4.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/renwu_4.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -405,7 +475,7 @@ div.computer-tips {
     top: 90px;
     width: 120px;
     height: 58px;
-    background-image: url("imgs/4/如果.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/ruguo.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -415,7 +485,7 @@ div.computer-tips {
     top: 160px;
     width: 217px;
     height: 58px;
-    background-image: url("imgs/4/没有灯光.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/meiyou_dengguang.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -425,7 +495,7 @@ div.computer-tips {
     top: 290px;
     width: 120px;
     height: 58px;
-    background-image: url("imgs/4/黑夜.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/heiye.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -435,7 +505,7 @@ div.computer-tips {
     top: 360px;
     width: 275px;
     height: 58px;
-    background-image: url("imgs/4/就没有远方.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/4/jiu_meiyou_yuanfang.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -451,14 +521,14 @@ div.computer-tips {
     position: relative;
     width: 100%;
     height: 100%;
-    background-image: url("imgs/5/天空底图.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/5/tiankong_ditu.png");
     background-size: auto 100%;
     background-repeat: repeat-x;
 }
 .cloud {
     width: 100%;
     height: 100%;
-    background-image: url("imgs/5/云朵草地.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/5/yunduo_caodi.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -467,7 +537,7 @@ div.computer-tips {
     bottom: 0;
     width: 100%;
     height: 17px;
-    background-image: url("imgs/5/地面拼图.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/5/dimian_pintu.png");
     background-size: auto 100%;
     background-repeat: repeat;
 }
@@ -478,51 +548,51 @@ div.computer-tips {
     margin-left: -100px;
     width: 200px;
     height: 57px;
-    background-image: url("imgs/5/低碳生活.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/5/ditan_shenghuo.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 .slide-four-text2 {
     position: absolute;
     left: 50%;
-    top: 140px;
+    top: 120px;
     margin-left: -100px;
     width: 200px;
     height: 57px;
-    background-image: url("imgs/5/节能减排.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/5/jieneng_jianpai.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 .slide-four-text3 {
     position: absolute;
     left: 50%;
-    top: 210px;
+    top: 190px;
     margin-left: -153px;
     width: 307px;
     height: 90px;
-    background-image: url("imgs/5/北京节能环保促进会提示您.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/5/beijing_jieneng_huanbaocujinhui_tishinin.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 .slide-four-text4 {
     position: absolute;
     left: 50%;
-    top: 350px;
+    bottom: 190px;
     margin-left: -132px;
     width: 265px;
     height: 57px;
-    background-image: url("imgs/5/请节约用电！.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/5/qing_jieyue_yongdian.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
 .qrcode {
     position: absolute;
     left: 50%;
-    bottom: 50px;
+    bottom: 30px;
     margin-left: -65px;
     width: 130px;
     height: 148px;
-    background-image: url("imgs/5/二维码.png");
-    background-size: 100% 100%;
-    background-repeat: no-repeat;
+}
+.qrcode-img {
+    width: 100%;
 }
