@@ -1,0 +1,407 @@
+---
+layout: none
+title: 独白
+permalink: /h5/
+---
+
+
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport"
+        content="width=device-width,initial-scale=1.0,maximum-scale=1.0,minimum-scale=1.0,user-scalable=no"/>
+  <title>iSlider more animation</title>
+  <link href="public/css/iSlider.css" rel="stylesheet">
+  <link href="main.css" rel="stylesheet">
+  <link href="animate.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background: #333;
+      overflow: hidden;
+    }
+
+    /*ul wrapper*/
+    #iSlider-wrapper {
+      height: 100%;
+      width: 100%;
+      overflow: hidden;
+      position: absolute;
+    }
+
+    #iSlider-wrapper ul {
+      list-style: none;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+    }
+
+    #iSlider-wrapper li {
+      position: absolute;
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-pack: center;
+      -webkit-box-align: center;
+      list-style: none;
+    }
+
+    #iSlider-wrapper li img {
+      max-width: 100%;
+      max-height: 100%;
+    }
+  </style>
+</head>
+<body>
+<div id="iSlider-wrapper"></div>
+<div id="hidden-space0" style="display:none">
+  <div class="slide-basic slide-one">
+    <div class="slide-one-content">
+      <div class="slide-one-people6" style="display: none"></div>
+      <div class="slide-one-people1"></div>
+    </div>
+    <div class="slide-one-footer"></div>
+  </div>
+</div>
+<div id="hidden-space1" style="display:none">
+  <div class="slide-basic slide-two">
+    <div class="slide-two-env">
+      <div class="air-conditioner-close"></div>
+      <div class="air-conditioner animated faster">
+        <div class="air-conditioner-tips animated shake infinite" style="display: none"></div>
+      </div>
+      <div class="projection-close"></div>
+      <div class="projection animated faster">
+        <div class="projection-tips animated shake infinite" style="display: none"></div>
+      </div>
+      <div class="computer-close"></div>
+      <div class="computer animated faster">
+        <div class="computer-tips animated shake infinite" style="display: none"></div>
+      </div>
+      <div class="background animated"></div>
+    </div>
+    <div class="slide-two-door"></div>
+    <div class="animated slide-two-people"></div>
+    <div class="mask"></div>
+    <div class="plug-bg" style="display: none">
+      <!--<div class="plug-out"></div>-->
+      <div class="plug"></div>
+    </div>
+    <div class="room-night" style="display: none"></div>
+    <div class="animated switch-bg">
+      <div class="switch"></div>
+    </div>
+  </div>
+</div>
+<div id="hidden-space2" style="display:none">
+  <div class="floor-board-bg">
+    <div class="floor-board"></div>
+    <div class="ceiling"></div>
+    <div class="light light1 animated"></div>
+    <div class="light light2 animated"></div>
+    <div class="lamp lamp2"></div>
+    <div class="lamp lamp1 animated"></div>
+    <div class="door door3"></div>
+    <div class="door door2 animated"></div>
+    <div class="door door1 animated"></div>
+    <div class="animated slide-three-people1"></div>
+    <div class="slide-three-people2" style="display: none"></div>
+    <div class="slide-three-people3" style="display: none"></div>
+    <div class="slide-three-people4" style="display: none"></div>
+    <div class="slide-three-mask animated">
+      <div class="slide-three-text1" style="display: none">
+        <div class="slide-three-text-mask slide-three-text-mask1 animated faster"></div>
+      </div>
+      <div class="slide-three-text2" style="display: none">
+        <div class="slide-three-text-mask slide-three-text-mask2 animated faster"></div>
+      </div>
+      <div class="slide-three-text3" style="display: none">
+        <div class="slide-three-text-mask slide-three-text-mask3 animated faster"></div>
+      </div>
+      <div class="slide-three-text4" style="display: none">
+        <div class="slide-three-text-mask slide-three-text-mask4 animated faster"></div>
+      </div>
+    </div>
+  </div>
+
+</div>
+<div id="hidden-space3" style="display:none">
+  <div class="sky">
+    <div class="cloud"></div>
+    <div class="grass"></div>
+    <div class="slide-four-text1" style="display: none">
+      <div class="slide-three-text-mask slide-four-text-mask1 animated faster"></div>
+    </div>
+    <div class="slide-four-text2" style="display: none">
+      <div class="slide-three-text-mask slide-four-text-mask2 animated faster"></div>
+    </div>
+    <div class="slide-four-text3" style="display: none">
+      <div class="slide-three-text-mask slide-four-text-mask3 animated faster"></div>
+    </div>
+    <div class="slide-four-text4" style="display: none">
+      <div class="slide-three-text-mask slide-four-text-mask4 animated faster"></div>
+    </div>
+    <div class="qrcode animated" style="display: none"></div>
+  </div>
+</div>
+<script type="text/javascript" src="public/js/iSlider.js"></script>
+<script type="text/javascript" src="public/js/iSlider.animate.js"></script>
+<script type="text/javascript" src="public/zepto.js"></script>
+<script>
+  var list = [
+    {
+      content: document.querySelector('#hidden-space0 > div')
+    },
+    {
+      content: document.querySelector('#hidden-space1 > div')
+    },
+    {
+      content: document.querySelector('#hidden-space2 > div')
+    },
+    {
+      content: document.querySelector('#hidden-space3 > div')
+    },
+  ];
+
+  var S = new iSlider({
+    dom: document.getElementById('iSlider-wrapper'),
+    data: list,
+    isAutoplay: 0,
+    isLooping: 0,
+    isOverspread: 0,
+    animateTime: 800,
+    isVertical: true,
+    fixPage: 0
+  });
+</script>
+<script>
+  var animationEnd = (function(el) {
+    var animations = {
+      animation: 'animationend',
+      OAnimation: 'oAnimationEnd',
+      MozAnimation: 'mozAnimationEnd',
+      WebkitAnimation: 'webkitAnimationEnd',
+    };
+
+    for (var t in animations) {
+      if (el.style[t] !== undefined) {
+        return animations[t];
+      }
+    }
+  })(document.createElement('div'));
+
+  S.on('slideChanged', function (num) {
+    console.log(num)
+
+    switch (num) {
+      case 0:
+        sliderOneAnimate()
+        break
+      case 1:
+        sliderTwoAnimate()
+        break
+      case 2:
+        sliderThreeAnimate()
+        break
+      case 3:
+        sliderFourAnimate()
+        break
+      default :
+        break
+    }
+
+  });
+
+  // 第一屏动画
+  function sliderOneAnimate(){
+    var $slideOnePeople1 = $('.slide-one-people1')
+    var $slideOnePeople6 = $('.slide-one-people6')
+    var i = 1
+    var timer = setInterval(function () {
+      $slideOnePeople1.addClass('slide-one-people' + i)
+      i++
+      if (i >= 6) {
+        clearInterval(timer)
+        i = 1
+        $slideOnePeople1.hide()
+        $slideOnePeople6.show()
+        setTimeout(function () {
+          $slideOnePeople6.addClass('slide-one-people7')
+        }, 500)
+      }
+    }, 500)
+  }
+
+
+
+
+  function sliderTwoAnimate () {
+    // 第二屏动画
+    var $slideTwoPeople = $('.slide-two-people')
+    var $airConditionerTips = $('.air-conditioner-tips')
+    var $airConditioner = $('.air-conditioner')
+    var $projection = $('.projection')
+    var $projectionTips = $('.projection-tips')
+    var $background = $('.background')
+    var $computerTips = $('.computer-tips')
+    var $computer = $('.computer')
+    var $plugBg = $('.plug-bg')
+    var $mask = $('.mask')
+    var $plug = $('.plug')
+    var $switchBg = $('.switch-bg')
+    var $switch = $('.switch')
+    var $roomNight = $('.room-night')
+    $slideTwoPeople.addClass('fadeInUp');
+    $slideTwoPeople.one(animationEnd, function () {
+      $airConditionerTips.show()
+    })
+
+    $airConditionerTips.one('click', function () {
+      $airConditioner.addClass('fadeOut')
+      $airConditionerTips.hide()
+      $projectionTips.show()
+    })
+    $projectionTips.one('click', function () {
+      $projection.addClass('fadeOut')
+      $background.addClass('fadeOut')
+      $projectionTips.hide()
+      $computerTips.show()
+    })
+    $computerTips.one('click', function () {
+      $computer.addClass('fadeOut')
+      $computerTips.hide()
+      $computer.one(animationEnd, function () {
+        $plugBg.show()
+        $mask.show()
+      })
+    })
+    $plugBg.one('click', function () {
+      $plug.addClass('plug-out')
+      setTimeout(function() {
+        $plugBg.hide()
+        $mask.hide()
+        $switchBg.addClass('fadeInUp')
+      }, 500)
+    })
+    $switchBg.one('click', function () {
+      $switchBg.addClass('switch-bg-close')
+      $switch.addClass('switch-close')
+      $roomNight.show()
+    })
+
+  }
+  // 还原第二屏动画
+  // function resetSliderOneAnimate () {
+  //   $slideTwoPeople.removeClass('fadeInUp')
+  //   $airConditionerTips.hide()
+  //   $projectionTips.hide()
+  //   $computerTips.hide()
+  //   $airConditioner.removeClass('air-conditioner-close')
+  //   $projection.removeClass('projection-close')
+  //   $computer.removeClass('computer-close')
+  //
+  // }
+
+  // 第三屏动画
+
+  function sliderThreeAnimate () {
+    var $slideThreePeople1 = $('.slide-three-people1')
+    var $slideThreePeople2 = $('.slide-three-people2')
+    var $slideThreePeople3 = $('.slide-three-people3')
+    var $slideThreePeople4 = $('.slide-three-people4')
+    var $light1 = $('.light1')
+    var $light2 = $('.light2')
+    var $lamp1 = $('.lamp1')
+    var $door1 = $('.door1')
+    var $door2 = $('.door2')
+    var $slideThreeMask = $('.slide-three-mask')
+    var $slideThreeText1 = $('.slide-three-text1')
+    var $slideThreeText2 = $('.slide-three-text2')
+    var $slideThreeText3 = $('.slide-three-text3')
+    var $slideThreeText4 = $('.slide-three-text4')
+    var $slideThreeTextMask1 = $('.slide-three-text-mask1')
+    var $slideThreeTextMask2 = $('.slide-three-text-mask2')
+    var $slideThreeTextMask3 = $('.slide-three-text-mask3')
+    var $slideThreeTextMask4 = $('.slide-three-text-mask4')
+
+    $slideThreePeople1.addClass('fadeInUp')
+    $slideThreePeople1.one(animationEnd, function () {
+      $slideThreePeople1.hide()
+      $slideThreePeople2.show()
+      setTimeout(function () {
+        $slideThreePeople2.hide()
+        $slideThreePeople3.show()
+        $light1.addClass('fadeOut')
+        setTimeout(function () {
+          $light2.addClass('fadeOut')
+          $slideThreePeople3.hide()
+          $slideThreePeople4.show()
+          $light2.one(animationEnd, function () {
+            $lamp1.addClass('fadeOut')
+            $door1.addClass('fadeOut')
+            $slideThreePeople4.hide()
+            $door1.one(animationEnd, function () {
+              $door2.addClass('fadeOut')
+              $door2.one(animationEnd, function () {
+                mask()
+              })
+            })
+          })
+        }, 500)
+      }, 500)
+    })
+    function mask () {
+      $slideThreeMask.addClass('fadeIn')
+      $slideThreeMask.one(animationEnd, function () {
+        $slideThreeText1.show()
+        $slideThreeTextMask1.addClass('fadeIn')
+        setTimeout(function () {
+          $slideThreeText2.show()
+          $slideThreeTextMask2.addClass('fadeIn')
+        }, 500)
+        setTimeout(function () {
+          $slideThreeText3.show()
+          $slideThreeTextMask3.addClass('fadeIn')
+        }, 1000)
+        setTimeout(function () {
+          $slideThreeText4.show()
+          $slideThreeTextMask4.addClass('fadeIn')
+        }, 1500)
+      })
+    }
+  }
+
+  function sliderFourAnimate() {
+    var $slideFourText1 = $('.slide-four-text1')
+    var $slideFourText2 = $('.slide-four-text2')
+    var $slideFourText3 = $('.slide-four-text3')
+    var $slideFourText4 = $('.slide-four-text4')
+    var $slideFourTextMask1 = $('.slide-four-text-mask1')
+    var $slideFourTextMask2 = $('.slide-four-text-mask2')
+    var $slideFourTextMask3 = $('.slide-four-text-mask3')
+    var $slideFourTextMask4 = $('.slide-four-text-mask4')
+    $slideFourText1.show()
+    $slideFourTextMask1.addClass('fadeIn')
+    setTimeout(function () {
+      $slideFourText2.show()
+      $slideFourTextMask2.addClass('fadeIn')
+    }, 500)
+    setTimeout(function () {
+      $slideFourText3.show()
+      $slideFourTextMask3.addClass('fadeIn')
+    }, 1000)
+    setTimeout(function () {
+      $slideFourText4.show()
+      $slideFourTextMask4.addClass('fadeIn')
+      $('.qrcode').show().addClass('tada')
+    }, 1500)
+  }
+
+</script>
+</body>
+</html>
