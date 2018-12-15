@@ -93,14 +93,11 @@ permalink: /h5/
     <div class="slide-two-door"></div>
     <div class="animated slide-two-people"></div>
     <div class="mask"></div>
-    <div class="plug-bg-out" style="display: none">
-      <div class="plug-out"></div>
+    <div class="plug-bg no-opacity animated">
+      <div class="plug"></div>
     </div>
     <div class="plug-bg-out no-opacity">
       <div class="plug-out"></div>
-    </div>
-    <div class="plug-bg no-opacity animated">
-      <div class="plug"></div>
     </div>
     <div class="room-night" style="display: none"></div>
     <div class="animated switch-bg">
@@ -345,7 +342,7 @@ permalink: /h5/
       $computer.addClass('fadeOut')
       $computerTips.hide()
       $computer.one(animationEnd, function () {
-        $plugBg.removeClass('no-opacity').css('z-index', 1)
+        $plugBg.removeClass('no-opacity').css('z-index', 2)
         $plugBgOut.removeClass('no-opacity').css('z-index', 1)
         $mask.show()
       })
