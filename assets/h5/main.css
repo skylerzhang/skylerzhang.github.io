@@ -35,9 +35,13 @@
 }
 
 .slide-basic {
-    position: relative;
-    width: 100%;
-    height: 100%;
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-left: -187px;
+    margin-top: -334px;
+    width: 375px;
+    height: 667px;
 }
 .slide-one {
     background-image: url("http://app.billionconnect.com/h5/imgs/1/yue_tiankong.png");
@@ -548,7 +552,7 @@ div.computer-tips {
     margin-left: -100px;
     width: 200px;
     height: 57px;
-    background-image: url("http://app.billionconnect.com/h5/imgs/5/ditan_shenghuo.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/5/jieneng_jianpai.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
@@ -559,7 +563,7 @@ div.computer-tips {
     margin-left: -100px;
     width: 200px;
     height: 57px;
-    background-image: url("http://app.billionconnect.com/h5/imgs/5/jieneng_jianpai.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/5/ditan_shenghuo.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
 }
