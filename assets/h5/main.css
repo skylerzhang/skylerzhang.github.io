@@ -48,6 +48,14 @@
     background-size: 100%;
     background-repeat: no-repeat;
 }
+.slide-one-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url("http://app.billionconnect.com/h5/imgs/slider-one-wrap-bg.png");
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+}
 .slide-one-content {
     position: relative;
     width: 100%;
@@ -113,7 +121,15 @@
     background-repeat: no-repeat;
 }
 .slide-two {
-    background-image: url("http://app.billionconnect.com/h5/imgs/2/menguang_beijing.png");
+    background-image: url("http://app.billionconnect.com/h5/imgs/slider-two-wrap-bg1.png");
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+}
+.slide-two-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url("http://app.billionconnect.com/h5/imgs/slider-two-wrap-bg1.png");
     background-size: auto 100%;
     background-repeat: repeat-x;
 }
@@ -288,7 +304,7 @@ div.computer-tips {
     position: absolute;
     bottom: 0;
     transform: translate(0, 221px);
-    -webkit-transform: translate(0, 221px);
+    -webkit-transform: translate(0, 321px);
     width: 100%;
     height: 221px;
     background-image: url("http://app.billionconnect.com/h5/imgs/2/kaiguan_beijing.png");
@@ -332,6 +348,11 @@ div.computer-tips {
     left: 0;
     width: 100%;
     height: 100%;
+    background-image: url("http://app.billionconnect.com/h5/imgs/slider-two-wrap-bg2.png");
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+}
+.room-night-content {
     background-image: url("http://app.billionconnect.com/h5/imgs/2/yemian_2_guandenghou.png");
     background-size: 100% 100%;
     background-repeat: no-repeat;
@@ -599,4 +620,36 @@ div.computer-tips {
 }
 .qrcode-img {
     width: 100%;
+}
+
+.arrow {
+    display: none;
+    width: 20px;
+    height: 20px;
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    margin-left: -11px;
+    border: 3px solid transparent;
+    border-top: 3px solid #fff;
+    border-left: 3px solid #fff;
+    z-index: 99;
+    opacity: .8;
+    -webkit-transform: rotate(45deg);
+    -webkit-animation: arrow 1.5s infinite ease-in-out;
+}
+
+@-webkit-keyframes arrow {
+    0% {
+        opacity:0;
+        -webkit-transform:translate(0, 0px) rotate(45deg)
+    }
+    50% {
+        opacity:1;
+        -webkit-transform:translate(0, -5px) rotate(45deg)
+    }
+    100% {
+        opacity:0;
+        -webkit-transform:translate(0, -10px) rotate(45deg)
+    }
 }

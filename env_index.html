@@ -1,6 +1,6 @@
 ---
 layout: none
-title: 独白
+title: 北京节能环保促进会
 permalink: /h5/
 ---
 
@@ -60,35 +60,42 @@ permalink: /h5/
 <body>
 <div id="iSlider-wrapper"></div>
 <div id="hidden-space0" style="display:none">
-  <div class="slide-basic slide-one">
-    <div class="slide-one-content">
-      <div class="slide-one-people6 animated no-opacity"></div>
-      <div class="slide-one-people7 animated no-opacity"></div>
-      <div class="slide-one-people1 animated"></div>
+  <div class="slide-one-wrap">
+    <div class="slide-basic slide-one">
+      <div class="slide-one-content">
+        <div class="slide-one-people6 animated no-opacity"></div>
+        <div class="slide-one-people7 animated no-opacity"></div>
+        <div class="slide-one-people1 animated"></div>
+      </div>
+      <div class="slide-one-footer"></div>
     </div>
-    <div class="slide-one-footer"></div>
     <div class="loading">
       <div class="loading-rotate-full"></div>
     </div>
+    <div class="arrow arrow1"></div>
   </div>
 </div>
 <div id="hidden-space1" style="display:none">
-  <div class="slide-basic slide-two">
-    <div class="slide-two-env">
-      <div class="room-night no-opacity"></div>
-      <div class="air-conditioner-close"></div>
-      <div class="air-conditioner animated faster">
-        <div class="air-conditioner-tips animated shake infinite" style="display: none"></div>
+  <div class="slide-two-wrap">
+    <div class="slide-basic slide-two">
+      <div class="slide-two-env">
+        <div class="room-night no-opacity">
+          <div class="slide-basic room-night-content"></div>
+        </div>
+        <div class="air-conditioner-close"></div>
+        <div class="air-conditioner animated faster">
+          <div class="air-conditioner-tips animated shake infinite" style="display: none"></div>
+        </div>
+        <div class="projection-close"></div>
+        <div class="projection animated faster">
+          <div class="projection-tips animated shake infinite" style="display: none"></div>
+        </div>
+        <div class="computer-close"></div>
+        <div class="computer animated faster">
+          <div class="computer-tips animated shake infinite" style="display: none"></div>
+        </div>
+        <div class="background animated"></div>
       </div>
-      <div class="projection-close"></div>
-      <div class="projection animated faster">
-        <div class="projection-tips animated shake infinite" style="display: none"></div>
-      </div>
-      <div class="computer-close"></div>
-      <div class="computer animated faster">
-        <div class="computer-tips animated shake infinite" style="display: none"></div>
-      </div>
-      <div class="background animated"></div>
     </div>
     <div class="slide-two-door"></div>
     <div class="animated slide-two-people"></div>
@@ -99,12 +106,15 @@ permalink: /h5/
     <div class="plug-bg-out no-opacity">
       <div class="plug-out"></div>
     </div>
-    <div class="room-night" style="display: none"></div>
+    <div class="room-night" style="display: none">
+      <div class="slide-basic room-night-content"></div>
+    </div>
     <div class="animated switch-bg">
       <div class="switch-bg-close no-opacity"></div>
       <div class="switch-close no-opacity"></div>
       <div class="switch"></div>
     </div>
+    <div class="arrow arrow2"></div>
   </div>
 </div>
 <div id="hidden-space2" style="display:none">
@@ -136,6 +146,7 @@ permalink: /h5/
         <div class="slide-three-text-mask slide-three-text-mask4 animated"></div>
       </div>
     </div>
+    <div class="arrow arrow3"></div>
   </div>
 
 </div>
@@ -239,6 +250,12 @@ permalink: /h5/
     }
   })(document.createElement('div'));
 
+  var sWidth = $(window).width()
+
+  if (sWidth === 360) {
+    $('.slide-two-door').css('background', 'none')
+  }
+
   S.on('slideChanged', function (num) {
     switch (num) {
       case 0:
@@ -268,6 +285,7 @@ permalink: /h5/
     'http://app.billionconnect.com/h5/imgs/1/renwu_6.png',
     'http://app.billionconnect.com/h5/imgs/1/renwu_7.png',
     'http://app.billionconnect.com/h5/imgs/1/xia_dimian.png',
+    'http://app.billionconnect.com/h5/imgs/slider-one-wrap-bg.png'
     ],    //此处省略一万个字符
     imgs = [];
   $.when(preloadImg(list, imgs)).done(
@@ -282,6 +300,7 @@ permalink: /h5/
     var $slideOnePeople1 = $('.slide-one-people1')
     var $slideOnePeople6 = $('.slide-one-people6')
     var $slideOnePeople7 = $('.slide-one-people7')
+    var $arrow1 = $('.arrow1')
     var i = 1
     function people () {
       $slideOnePeople1.addClass('slide-one-people' + i)
@@ -296,7 +315,7 @@ permalink: /h5/
           $slideOnePeople7.addClass('fadeIn')
           $slideOnePeople7.one(animationEnd, function () {
             $slideOnePeople7.addClass('fadeOut faster')
-            // S.slideTo(1)
+            $arrow1.show()
           })
         })
       }
@@ -322,6 +341,7 @@ permalink: /h5/
     var $switchBg = $('.switch-bg')
     var $switch = $('.switch')
     var $roomNight = $('.room-night')
+    var $arrow2 = $('.arrow2')
     $slideTwoPeople.addClass('fadeInUp');
     $slideTwoPeople.one(animationEnd, function () {
       $airConditionerTips.show()
@@ -362,6 +382,7 @@ permalink: /h5/
       $switchBg.addClass('switch-bg-close')
       $switch.addClass('switch-close')
       $roomNight.show()
+      $arrow2.show()
       // S.slideTo(2)
     })
 
@@ -399,7 +420,7 @@ permalink: /h5/
     var $slideThreeTextMask2 = $('.slide-three-text-mask2')
     var $slideThreeTextMask3 = $('.slide-three-text-mask3')
     var $slideThreeTextMask4 = $('.slide-three-text-mask4')
-
+    var $arrow3 = $('.arrow3')
     $slideThreePeople1.addClass('fadeInUp')
     $slideThreePeople1.one(animationEnd, function () {
       $slideThreePeople1.hide()
@@ -443,6 +464,7 @@ permalink: /h5/
         setTimeout(function () {
           $slideThreeText4.show()
           $slideThreeTextMask4.addClass('fadeIn')
+          $arrow3.show()
           // S.slideTo(3)
         }, 3000)
       })
