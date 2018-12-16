@@ -602,7 +602,7 @@ div.computer-tips {
 .slide-four-text4 {
     position: absolute;
     left: 50%;
-    bottom: 190px;
+    top: 290px;
     margin-left: -132px;
     width: 265px;
     height: 57px;
@@ -613,7 +613,7 @@ div.computer-tips {
 .qrcode {
     position: absolute;
     left: 50%;
-    bottom: 30px;
+    top: 370px;
     margin-left: -65px;
     width: 130px;
     height: 148px;
