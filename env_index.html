@@ -4,7 +4,6 @@ title: 北京节能环保促进会
 permalink: /h5/
 ---
 
-
 <!DOCTYPE html>
 <html lang="zh-CN">
 <head>
@@ -63,9 +62,12 @@ permalink: /h5/
   <div class="slide-one-wrap">
     <div class="slide-basic slide-one">
       <div class="slide-one-content">
-        <div class="slide-one-people6 animated no-opacity"></div>
-        <div class="slide-one-people7 animated no-opacity"></div>
-        <div class="slide-one-people1 animated"></div>
+        <!--<div class="slide-one-people6 animated no-opacity"></div>-->
+        <!--<div class="slide-one-people7 animated no-opacity"></div>-->
+        <div class="slide-one-new-people1" style="display: none"></div>
+        <div class="slide-one-people1 animated">
+          <div class="renwu-tanqi" style="display: none"></div>
+        </div>
       </div>
       <div class="slide-one-footer"></div>
     </div>
@@ -81,6 +83,13 @@ permalink: /h5/
       <div class="slide-two-env">
         <div class="room-night no-opacity">
           <div class="slide-basic room-night-content"></div>
+        </div>
+        <div class="ammeter">
+          <div class="ammeter_basic ammeter_5"></div>
+          <div class="ammeter_basic ammeter_4"></div>
+          <div class="ammeter_basic ammeter_3"></div>
+          <div class="ammeter_basic ammeter_2"></div>
+          <div class="ammeter_basic ammeter_1"></div>
         </div>
         <div class="air-conditioner-close"></div>
         <div class="air-conditioner animated faster">
@@ -109,6 +118,10 @@ permalink: /h5/
     <div class="room-night" style="display: none">
       <div class="slide-basic room-night-content"></div>
     </div>
+    <div class="animated ammeter-copy-bg">
+      <div class="ammeter-copy"></div>
+      <div class="ammeter-copy2 no-opacity"></div>
+    </div>
     <div class="animated switch-bg">
       <div class="switch-bg-close no-opacity"></div>
       <div class="switch-close no-opacity"></div>
@@ -128,10 +141,30 @@ permalink: /h5/
     <div class="door door3"></div>
     <div class="door door2 animated"></div>
     <div class="door door1 animated"></div>
-    <div class="animated slide-three-people1"></div>
-    <div class="animated slide-three-people2 no-opacity"></div>
-    <div class="animated slide-three-people3 no-opacity"></div>
-    <div class="animated slide-three-people4 no-opacity"></div>
+    <!--<div class="animated slide-three-people1"></div>-->
+    <div class="slide-three-new-people1"></div>
+    <div class="slide-three-new-people2 no-opacity"></div>
+    <div class="slide-three-new-people3 no-opacity"></div>
+    <div class="slide-three-new-people4 no-opacity"></div>
+    <div class="slide-three-new-people5 no-opacity"></div>
+    <div class="slide-three-new-people6 no-opacity"></div>
+    <div class="slide-three-new-people7 no-opacity"></div>
+    <div class="slide-three-new-people8 no-opacity"></div>
+    <div class="slide-three-new-people9 no-opacity"></div>
+    <div class="slide-three-new-people10 no-opacity"></div>
+    <div class="slide-three-new-people11 no-opacity"></div>
+    <div class="slide-three-new-people12 no-opacity"></div>
+    <div class="slide-three-new-people13 no-opacity"></div>
+    <div class="slide-three-new-people14 no-opacity"></div>
+    <div class="slide-three-new-people15 no-opacity"></div>
+    <div class="slide-three-new-people16 no-opacity"></div>
+    <div class="slide-three-new-people17 no-opacity"></div>
+    <div class="slide-three-new-people18 no-opacity"></div>
+    <div class="slide-three-new-people19 no-opacity"></div>
+    <div class="slide-three-new-people20 no-opacity"></div>
+    <!--<div class="animated slide-three-people2 no-opacity"></div>-->
+    <!--<div class="animated slide-three-people3 no-opacity"></div>-->
+    <!--<div class="animated slide-three-people4 no-opacity"></div>-->
     <div class="slide-three-mask animated">
       <div class="slide-three-text1" style="display: none">
         <div class="slide-three-text-mask slide-three-text-mask1 animated"></div>
@@ -282,8 +315,17 @@ permalink: /h5/
     'http://app.billionconnect.com/h5/imgs/1/renwu_1.png',
     'http://app.billionconnect.com/h5/imgs/1/renwu_2.png',
     'http://app.billionconnect.com/h5/imgs/1/renwu_3.png',
-    'http://app.billionconnect.com/h5/imgs/1/renwu_6.png',
-    'http://app.billionconnect.com/h5/imgs/1/renwu_7.png',
+    // 'http://app.billionconnect.com/h5/imgs/1/renwu_6.png',
+    // 'http://app.billionconnect.com/h5/imgs/1/renwu_7.png',
+    'http://app.billionconnect.com/h5/imgs/1new/1_new_people1.png',
+    'http://app.billionconnect.com/h5/imgs/1new/1_new_people2.png',
+    'http://app.billionconnect.com/h5/imgs/1new/1_new_people3.png',
+    'http://app.billionconnect.com/h5/imgs/1new/1_new_people4.png',
+    'http://app.billionconnect.com/h5/imgs/1new/1_new_people5.png',
+    'http://app.billionconnect.com/h5/imgs/1new/1_new_people6.png',
+    'http://app.billionconnect.com/h5/imgs/1new/1_new_people7.png',
+    'http://app.billionconnect.com/h5/imgs/1new/tanqi_qiti.png',
+    'http://app.billionconnect.com/h5/imgs/1new/renwu_tanqi.png',
     'http://app.billionconnect.com/h5/imgs/1/xia_dimian.png',
     'http://app.billionconnect.com/h5/imgs/slider-one-wrap-bg.png'
     ],    //此处省略一万个字符
@@ -298,30 +340,47 @@ permalink: /h5/
   // 第一屏动画
   function sliderOneAnimate(){
     var $slideOnePeople1 = $('.slide-one-people1')
-    var $slideOnePeople6 = $('.slide-one-people6')
-    var $slideOnePeople7 = $('.slide-one-people7')
+    // var $slideOnePeople6 = $('.slide-one-people6')
+    // var $slideOnePeople7 = $('.slide-one-people7')
+    var $slideOneNewPeople1 = $('.slide-one-new-people1')
+    var $renwuTanqi = $('.renwu-tanqi')
     var $arrow1 = $('.arrow1')
     var i = 1
+    var j = 1
+    var timer1 = null
     function people () {
       $slideOnePeople1.addClass('slide-one-people' + i)
       i++
-      if (i >= 6) {
+      if (i >= 7) {
         clearInterval(timer)
+        $renwuTanqi.show()
         i = 1
-        $slideOnePeople1.addClass('fadeOut')
-        $slideOnePeople6.addClass('fadeIn')
-        $slideOnePeople6.one(animationEnd, function () {
-          $slideOnePeople6.hide()
-          $slideOnePeople7.addClass('fadeIn')
-          $slideOnePeople7.one(animationEnd, function () {
-            $slideOnePeople7.addClass('fadeOut faster')
-            $arrow1.show()
-          })
-        })
+        $slideOnePeople1.addClass('fadeOut faster')
+        // $slideOnePeople6.addClass('fadeIn')
+        // $slideOnePeople6.one(animationEnd, function () {
+        //   // $slideOnePeople6.hide()
+        //   // $slideOnePeople7.addClass('fadeIn')
+        //   $slideOnePeople7.one(animationEnd, function () {
+        //     // $slideOnePeople7.addClass('fadeOut faster')
+        //     $arrow1.show()
+        //   })
+        // })
+        $slideOneNewPeople1.show()
+        timer1 = setInterval(people2, 200)
+      }
+    }
+    function people2 () {
+      $slideOneNewPeople1.addClass('slide-one-new-people' + j)
+      j++
+      if (j >= 8) {
+        clearInterval(timer1)
+        j = 1
+        $slideOneNewPeople1.hide()
+        $arrow1.show()
       }
     }
     people()
-    var timer = setInterval(people, 300)
+    var timer = setInterval(people, 200)
   }
 
   function sliderTwoAnimate () {
@@ -342,6 +401,13 @@ permalink: /h5/
     var $switch = $('.switch')
     var $roomNight = $('.room-night')
     var $arrow2 = $('.arrow2')
+    var $ammeter1 = $('.ammeter_1')
+    var $ammeter2 = $('.ammeter_2')
+    var $ammeter3 = $('.ammeter_3')
+    var $ammeter4 = $('.ammeter_4')
+    var $ammeter5 = $('.ammeter_5')
+    var $ammeterCopyBg = $('.ammeter-copy-bg')
+    var $ammeterCopy2 = $('.ammeter-copy2')
     $slideTwoPeople.addClass('fadeInUp');
     $slideTwoPeople.one(animationEnd, function () {
       $airConditionerTips.show()
@@ -350,17 +416,20 @@ permalink: /h5/
     $airConditionerTips.one('click', function () {
       $airConditioner.addClass('fadeOut')
       $airConditionerTips.hide()
+      $ammeter1.hide()
       $projectionTips.show()
     })
     $projectionTips.one('click', function () {
       $projection.addClass('fadeOut')
       $background.addClass('fadeOut')
       $projectionTips.hide()
+      $ammeter2.hide()
       $computerTips.show()
     })
     $computerTips.one('click', function () {
       $computer.addClass('fadeOut')
       $computerTips.hide()
+      $ammeter3.hide()
       $computer.one(animationEnd, function () {
         $plugBg.removeClass('no-opacity').css('z-index', 2)
         $plugBgOut.removeClass('no-opacity').css('z-index', 1)
@@ -369,17 +438,21 @@ permalink: /h5/
     })
     $plug.one('click', function () {
       $plugBg.addClass('fadeOut')
+      $ammeter4.hide()
       // $plug.addClass('plug-out')
       $plugBg.one(animationEnd, function () {
         setTimeout(function() {
           $plugBgOut.hide()
           $mask.hide()
           $switchBg.addClass('fadeInUp')
+          $ammeterCopyBg.addClass('fadeInDown')
         }, 500)
       })
     })
     $switchBg.one('click', function () {
       $switchBg.addClass('switch-bg-close')
+      $ammeterCopyBg.addClass('ammeter-copy-bg-close')
+      $ammeterCopy2.css('opacity', 1)
       $switch.addClass('switch-close')
       $roomNight.show()
       $arrow2.show()
@@ -402,10 +475,10 @@ permalink: /h5/
   // 第三屏动画
 
   function sliderThreeAnimate () {
-    var $slideThreePeople1 = $('.slide-three-people1')
-    var $slideThreePeople2 = $('.slide-three-people2')
-    var $slideThreePeople3 = $('.slide-three-people3')
-    var $slideThreePeople4 = $('.slide-three-people4')
+    // var $slideThreePeople1 = $('.slide-three-people1')
+    // var $slideThreePeople2 = $('.slide-three-people2')
+    // var $slideThreePeople3 = $('.slide-three-people3')
+    // var $slideThreePeople4 = $('.slide-three-people4')
     var $light1 = $('.light1')
     var $light2 = $('.light2')
     var $lamp1 = $('.lamp1')
@@ -420,34 +493,61 @@ permalink: /h5/
     var $slideThreeTextMask2 = $('.slide-three-text-mask2')
     var $slideThreeTextMask3 = $('.slide-three-text-mask3')
     var $slideThreeTextMask4 = $('.slide-three-text-mask4')
+    var $slideThreeNewPeople1 = $('.slide-three-new-people1')
     var $arrow3 = $('.arrow3')
-    $slideThreePeople1.addClass('fadeInUp')
-    $slideThreePeople1.one(animationEnd, function () {
-      $slideThreePeople1.hide()
-      $slideThreePeople2.addClass('fadeIn')
+    // $slideThreePeople1.addClass('fadeInUp')
+    // $slideThreePeople1.one(animationEnd, function () {
+    //   $slideThreePeople1.hide()
+    //   $slideThreePeople2.addClass('fadeIn')
+    //   $slideThreePeople2.one(animationEnd, function () {
+    //     $slideThreePeople2.hide()
+    //     $slideThreePeople3.addClass('fadeIn')
+    //     $light1.addClass('fadeOut')
+    //     $slideThreePeople3.one(animationEnd, function () {
+    //       $light2.addClass('fadeOut')
+    //       $slideThreePeople3.hide()
+    //       $slideThreePeople4.addClass('fadeIn')
+    //       $light2.one(animationEnd, function () {
+    //         $lamp1.addClass('fadeOut')
+    //         $door1.addClass('fadeOut')
+    //         $slideThreePeople4.hide()
+    //         $door1.one(animationEnd, function () {
+    //           $door2.addClass('fadeOut')
+    //           $door2.one(animationEnd, function () {
+    //             mask()
+    //           })
+    //         })
+    //       })
+    //     })
+    //   })
+    // })
 
-      $slideThreePeople2.one(animationEnd, function () {
-        $slideThreePeople2.hide()
-        $slideThreePeople3.addClass('fadeIn')
+    var timerThree = null
+    var i = 1
+    timerThree = setInterval(function () {
+      $slideThreeNewPeople1.addClass('slide-three-new-people' + (i+1))
+      i++
+      if (i === 10) {
         $light1.addClass('fadeOut')
-        $slideThreePeople3.one(animationEnd, function () {
-          $light2.addClass('fadeOut')
-          $slideThreePeople3.hide()
-          $slideThreePeople4.addClass('fadeIn')
-          $light2.one(animationEnd, function () {
-            $lamp1.addClass('fadeOut')
-            $door1.addClass('fadeOut')
-            $slideThreePeople4.hide()
-            $door1.one(animationEnd, function () {
-              $door2.addClass('fadeOut')
-              $door2.one(animationEnd, function () {
-                mask()
-              })
-            })
+      }
+      if (i === 15) {
+        $light2.addClass('fadeOut')
+      }
+      if (i >= 20) {
+        clearInterval(timerThree)
+        $slideThreeNewPeople1.hide()
+        $lamp1.addClass('fadeOut')
+        $door1.addClass('fadeOut')
+        $door1.one(animationEnd, function () {
+          $door2.addClass('fadeOut')
+          $door2.one(animationEnd, function () {
+            mask()
           })
         })
-      })
-    })
+
+      }
+    }, 300)
+
     function mask () {
       $slideThreeMask.addClass('fadeIn')
       $slideThreeMask.one(animationEnd, function () {
