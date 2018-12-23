@@ -174,6 +174,14 @@
     background-size: auto 100%;
     background-repeat: repeat-x;
 }
+.slide-three-wrap {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    background-image: url("http://app.billionconnect.com/h5/imgs/4new/slider_three_bg.png");
+    background-size: auto 100%;
+    background-repeat: repeat-x;
+}
 .slide-two-env {
     position: relative;
     width: 100%;
@@ -503,8 +511,8 @@ div.computer-tips {
 }
 .floor-board-bg {
     position: relative;
-    width: 100%;
-    height: 100%;
+    /*width: 100%;*/
+    /*height: 100%;*/
     background-image: url("http://app.billionconnect.com/h5/imgs/4/diban_pinjietiao.png");
     background-size: auto 100%;
     background-repeat: repeat-x;

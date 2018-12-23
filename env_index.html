@@ -131,40 +131,42 @@ permalink: /h5/
   </div>
 </div>
 <div id="hidden-space2" style="display:none">
-  <div class="floor-board-bg">
-    <div class="floor-board"></div>
-    <div class="ceiling"></div>
-    <div class="light light1 animated"></div>
-    <div class="light light2 animated"></div>
-    <div class="lamp lamp2"></div>
-    <div class="lamp lamp1 animated"></div>
-    <div class="door door3"></div>
-    <div class="door door2 animated"></div>
-    <div class="door door1 animated"></div>
-    <!--<div class="animated slide-three-people1"></div>-->
-    <div class="slide-three-new-people1"></div>
-    <div class="slide-three-new-people2 no-opacity"></div>
-    <div class="slide-three-new-people3 no-opacity"></div>
-    <div class="slide-three-new-people4 no-opacity"></div>
-    <div class="slide-three-new-people5 no-opacity"></div>
-    <div class="slide-three-new-people6 no-opacity"></div>
-    <div class="slide-three-new-people7 no-opacity"></div>
-    <div class="slide-three-new-people8 no-opacity"></div>
-    <div class="slide-three-new-people9 no-opacity"></div>
-    <div class="slide-three-new-people10 no-opacity"></div>
-    <div class="slide-three-new-people11 no-opacity"></div>
-    <div class="slide-three-new-people12 no-opacity"></div>
-    <div class="slide-three-new-people13 no-opacity"></div>
-    <div class="slide-three-new-people14 no-opacity"></div>
-    <div class="slide-three-new-people15 no-opacity"></div>
-    <div class="slide-three-new-people16 no-opacity"></div>
-    <div class="slide-three-new-people17 no-opacity"></div>
-    <div class="slide-three-new-people18 no-opacity"></div>
-    <div class="slide-three-new-people19 no-opacity"></div>
-    <div class="slide-three-new-people20 no-opacity"></div>
-    <!--<div class="animated slide-three-people2 no-opacity"></div>-->
-    <!--<div class="animated slide-three-people3 no-opacity"></div>-->
-    <!--<div class="animated slide-three-people4 no-opacity"></div>-->
+  <div class="slide-three-wrap">
+    <div class="floor-board-bg slide-basic">
+      <div class="floor-board"></div>
+      <div class="ceiling"></div>
+      <div class="light light1 animated"></div>
+      <div class="light light2 animated"></div>
+      <div class="lamp lamp2"></div>
+      <div class="lamp lamp1 animated"></div>
+      <div class="door door3"></div>
+      <div class="door door2 animated"></div>
+      <div class="door door1 animated"></div>
+      <!--<div class="animated slide-three-people1"></div>-->
+      <div class="slide-three-new-people1"></div>
+      <div class="slide-three-new-people2 no-opacity"></div>
+      <div class="slide-three-new-people3 no-opacity"></div>
+      <div class="slide-three-new-people4 no-opacity"></div>
+      <div class="slide-three-new-people5 no-opacity"></div>
+      <div class="slide-three-new-people6 no-opacity"></div>
+      <div class="slide-three-new-people7 no-opacity"></div>
+      <div class="slide-three-new-people8 no-opacity"></div>
+      <div class="slide-three-new-people9 no-opacity"></div>
+      <div class="slide-three-new-people10 no-opacity"></div>
+      <div class="slide-three-new-people11 no-opacity"></div>
+      <div class="slide-three-new-people12 no-opacity"></div>
+      <div class="slide-three-new-people13 no-opacity"></div>
+      <div class="slide-three-new-people14 no-opacity"></div>
+      <div class="slide-three-new-people15 no-opacity"></div>
+      <div class="slide-three-new-people16 no-opacity"></div>
+      <div class="slide-three-new-people17 no-opacity"></div>
+      <div class="slide-three-new-people18 no-opacity"></div>
+      <div class="slide-three-new-people19 no-opacity"></div>
+      <div class="slide-three-new-people20 no-opacity"></div>
+      <!--<div class="animated slide-three-people2 no-opacity"></div>-->
+      <!--<div class="animated slide-three-people3 no-opacity"></div>-->
+      <!--<div class="animated slide-three-people4 no-opacity"></div>-->
+    </div>
     <div class="slide-three-mask animated">
       <div class="slide-three-text1" style="display: none">
         <div class="slide-three-text-mask slide-three-text-mask1 animated"></div>
@@ -181,7 +183,6 @@ permalink: /h5/
     </div>
     <div class="arrow arrow3"></div>
   </div>
-
 </div>
 <div id="hidden-space3" style="display:none">
   <div class="sky">
@@ -355,7 +356,11 @@ permalink: /h5/
         clearInterval(timer)
         $renwuTanqi.show()
         i = 1
-        $slideOnePeople1.addClass('fadeOut faster')
+        $slideOnePeople1.addClass('fadeOut')
+        $slideOnePeople1.one(animationEnd, function () {
+          $slideOneNewPeople1.show()
+          timer1 = setInterval(people2, 300)
+        })
         // $slideOnePeople6.addClass('fadeIn')
         // $slideOnePeople6.one(animationEnd, function () {
         //   // $slideOnePeople6.hide()
@@ -365,8 +370,6 @@ permalink: /h5/
         //     $arrow1.show()
         //   })
         // })
-        $slideOneNewPeople1.show()
-        timer1 = setInterval(people2, 200)
       }
     }
     function people2 () {
@@ -380,7 +383,7 @@ permalink: /h5/
       }
     }
     people()
-    var timer = setInterval(people, 200)
+    var timer = setInterval(people, 400)
   }
 
   function sliderTwoAnimate () {
