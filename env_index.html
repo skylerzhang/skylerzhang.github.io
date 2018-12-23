@@ -65,9 +65,8 @@ permalink: /h5/
         <!--<div class="slide-one-people6 animated no-opacity"></div>-->
         <!--<div class="slide-one-people7 animated no-opacity"></div>-->
         <div class="slide-one-new-people1" style="display: none"></div>
-        <div class="slide-one-people1 animated">
-          <div class="renwu-tanqi" style="display: none"></div>
-        </div>
+        <div class="slide-one-people1 animated"></div>
+        <div class="renwu-tanqi animated" style="display: none"></div>
       </div>
       <div class="slide-one-footer"></div>
     </div>
@@ -356,10 +355,14 @@ permalink: /h5/
         clearInterval(timer)
         $renwuTanqi.show()
         i = 1
-        $slideOnePeople1.addClass('fadeOut')
-        $slideOnePeople1.one(animationEnd, function () {
+        $renwuTanqi.addClass('fadeOut')
+        // $slideOnePeople1.addClass('fadeOut')
+        $renwuTanqi.one(animationEnd, function () {
+          // $slideOnePeople1.hide()
+          $slideOnePeople1.addClass('fadeOut faster')
           $slideOneNewPeople1.show()
-          timer1 = setInterval(people2, 300)
+          people2()
+          timer1 = setInterval(people2, 400)
         })
         // $slideOnePeople6.addClass('fadeIn')
         // $slideOnePeople6.one(animationEnd, function () {
@@ -549,7 +552,7 @@ permalink: /h5/
         })
 
       }
-    }, 300)
+    }, 400)
 
     function mask () {
       $slideThreeMask.addClass('fadeIn')
