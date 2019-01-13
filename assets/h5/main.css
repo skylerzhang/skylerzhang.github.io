@@ -811,7 +811,7 @@ div.computer-tips {
 .qrcode {
     position: absolute;
     left: 50%;
-    top: 370px;
+    top: 350px;
     margin-left: -150px;
     width: 300px;
     height: 148px;
@@ -823,6 +823,7 @@ div.computer-tips {
     font-size: 18px;
 }
 .share-number span{
+    font-size: 25px;
     color: yellow;
 }
 .qrcode-img {
