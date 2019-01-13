@@ -200,6 +200,7 @@ permalink: /h5/
       <!--<div class="slide-three-text-mask slide-four-text-mask4 animated faster"></div>-->
     </div>
     <div class="qrcode animated" style="display: none">
+      <div class="share-number"></div>
       <img class="qrcode-img" src="http://app.billionconnect.com/h5/imgs/5/er_wei_ma.png">
     </div>
   </div>
@@ -207,6 +208,30 @@ permalink: /h5/
 <script type="text/javascript" src="/assets/h5/public/js/iSlider.js"></script>
 <script type="text/javascript" src="/assets/h5/public/js/iSlider.animate.js"></script>
 <script type="text/javascript" src="/assets/h5/public/zepto.js"></script>
+<script>
+  function shareAfter() {
+    $.ajax({
+      url: 'http://hb9.api.okayapi.com',
+      dataType: 'jsonp',
+      jsonpCallback: 'onCallback',
+      cache: true,
+      data: {
+        sign: '22A6E613AF9AF8EDDBE658652C83DFF7',
+        app_key: '5A6E79B610F3527C24B40FD0997A2A87',
+        change_value: 1,
+        change_field: 'visit_count',
+        model_name: 'visit_table',
+        id: '2',
+        s: 'App.Table.ChangeNumber'
+      }
+    }).then(function (response) {
+      console.log(response)
+      $('.share-number').html('感谢您成为第<span>'+ response.data.after_value +'</span>位参与者')
+    })
+  }
+  shareAfter ()
+
+</script>
 <script>
   var list = [
     {
@@ -604,5 +629,9 @@ permalink: /h5/
   }
 
 </script>
+<div style="display: none">
+  <script type="text/javascript" src="https://s23.cnzz.com/z_stat.php?id=1275915509&web_id=1275915509"></script>
+</div>
 </body>
 </html>
+

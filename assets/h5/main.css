@@ -812,12 +812,21 @@ div.computer-tips {
     position: absolute;
     left: 50%;
     top: 370px;
-    margin-left: -65px;
-    width: 130px;
+    margin-left: -100px;
+    width: 200px;
     height: 148px;
+    text-align: center;
+}
+.share-number {
+    color: greenyellow;
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+.share-number span{
+    color: yellow;
 }
 .qrcode-img {
-    width: 100%;
+    width: 130px;
 }
 
 .arrow {
