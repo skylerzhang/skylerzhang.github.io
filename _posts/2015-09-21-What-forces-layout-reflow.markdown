@@ -69,7 +69,7 @@ tag: event js
 * `inputElem.focus()`
 * `inputElem.select()`, `textareaElem.select()`
 
-###鼠标事件爱你
+###鼠标事件爱你妹
 
 * `mouseEvt.layerX`, `mouseEvt.layerY`, `mouseEvt.offsetX`, `mouseEvt.offsetY`
 
