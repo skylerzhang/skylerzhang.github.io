@@ -76,13 +76,29 @@
     position: absolute; bottom: 0; left: 50%; margin-left: -35px;
 }
 
+.bs-wrap-outer {
+    width: 100%;
+    max-width: 450px;
+    margin: 100px auto;
+    aspect-ratio: 450 / 250;
+    overflow: hidden;
+    container-type: inline-size;
+}
+
 .bs-wrap {
     position: relative;
-    margin: 100px auto;
     width: 450px;
     height: 250px;
     background: #c0b096;
     border-radius: 5px;
+    transform-origin: top left;
+    transform: scale(calc(100cqw / 450));
+}
+
+@media screen and (max-width: 500px) {
+    .bs-wrap-outer {
+        margin: 48px auto;
+    }
 }
 
 .wrap-gt {
